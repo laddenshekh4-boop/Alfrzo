@@ -1,63 +1,190 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Alfrzo — find rooms, PGs and flats across India.">
-  <meta name="theme-color" content="#11152a"><title>Alfrzo — Find a place that feels like Home</title>
-  <link rel="preconnect" href="https://images.unsplash.com"><link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Alfrzo — Find a place that feels like Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14183a;--muted:#6b7090;--purple:#5b3df5;--pink:#e830e8;--blue:#2f45ff;--bg:#f6f5fc;--card:#fff;--line:#e9e8f3}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#e9e7f5}
+button,select{font:inherit;color:inherit}
+button{border:0;background:none;cursor:pointer}
+.app{max-width:430px;min-height:100vh;margin:0 auto;background:var(--bg);position:relative;padding-bottom:84px;overflow:hidden}
+svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* hero */
+.hero{height:250px;padding:18px 18px 0;color:#fff;position:relative;background:
+ linear-gradient(180deg,rgba(18,14,60,.15),rgba(18,14,60,.85)),
+ radial-gradient(circle at 80% 30%,#ff9a6b 0,transparent 35%),
+ linear-gradient(120deg,#2a1d6e,#5b3d9e 55%,#c0527a)}
+.bar{display:flex;align-items:center;gap:14px}
+.bar .logo{display:flex;align-items:center;gap:8px;font-size:24px;font-weight:800;margin-right:auto}
+.logo i{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#7a5bff,#c13bff);display:grid;place-items:center}
+.logo i svg{width:18px;height:18px}
+.hero h1{margin:22px 0 6px;font-size:31px;line-height:1.1;font-weight:800;letter-spacing:-.5px}
+.hero h1 em{font-style:normal;color:#f04bf5}
+.hero p{margin:0;font-size:13.5px;font-weight:500;opacity:.95}
+
+/* search card */
+.search{margin:-46px 14px 0;background:#fff;border-radius:22px;padding:14px;box-shadow:0 14px 40px rgba(40,30,120,.16);position:relative}
+.field{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;height:48px;margin-bottom:10px;background:#fff}
+.field select{flex:1;border:0;background:none;outline:0;font-size:15px;font-weight:500;appearance:none;height:100%}
+.field .chev{width:16px;height:16px;opacity:.6}
+.go{width:100%;height:50px;border-radius:14px;color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(90deg,#2f45ff,#e830e8);box-shadow:0 8px 20px rgba(120,50,255,.35)}
+
+/* perks */
+.perks{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:18px 14px 6px;text-align:center;font-size:12px;font-weight:600}
+.perks div{display:flex;flex-direction:column;align-items:center;gap:7px}
+.perks b{width:50px;height:50px;border-radius:14px;display:grid;place-items:center}
+
+/* sections */
+.sec{display:flex;justify-content:space-between;align-items:center;padding:18px 16px 10px}
+.sec h2{margin:0;font-size:20px;font-weight:800;letter-spacing:-.3px}
+.sec a{color:var(--purple);font-weight:600;font-size:14px;cursor:pointer}
+.cities{display:flex;gap:10px;overflow-x:auto;padding:0 16px 4px;scrollbar-width:none}
+.cities::-webkit-scrollbar{display:none}
+.city{flex:0 0 76px;height:86px;border-radius:14px;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:flex-end;justify-content:center;padding-bottom:7px;border:2px solid transparent}
+.city.on{border-color:var(--purple)}
+
+/* rooms */
+.list{padding:0 14px;display:grid;gap:10px}
+.room{display:flex;gap:12px;background:#fff;border-radius:16px;padding:8px;box-shadow:0 4px 16px rgba(40,30,120,.06)}
+.pic{flex:0 0 126px;height:112px;border-radius:12px;position:relative}
+.heart{position:absolute;top:7px;right:7px;color:#fff}
+.heart svg{width:24px;height:24px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4))}
+.heart.on svg{fill:#ff3d77;stroke:#ff3d77}
+.info{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between;padding:2px 2px 2px 0}
+.info h3{margin:0;font-size:15px;font-weight:700}
+.info .loc{font-size:12.5px;color:var(--muted)}
+.info .price{font-weight:800;font-size:15px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags span{background:#f1effb;border-radius:8px;padding:3px 8px;font-size:11px;font-weight:600}
+.row{display:flex;justify-content:space-between;align-items:center}
+.rate{font-size:12.5px;font-weight:700}
+.rate s{text-decoration:none;color:var(--muted);font-weight:500}
+.rate::before{content:"★ ";color:#f5a623}
+.book{background:var(--purple);color:#fff;border-radius:10px;padding:6px 12px;font-size:12px;font-weight:700}
+
+/* tabs */
+.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;display:flex;justify-content:space-around;background:#fff;border-radius:22px 22px 0 0;padding:10px 4px calc(10px + env(safe-area-inset-bottom,0px));box-shadow:0 -6px 24px rgba(40,30,120,.1);z-index:5}
+.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:500;color:#2a2d4a;flex:1}
+.tabs button.on{color:var(--purple);font-weight:700}
+.tabs button.on svg{fill:rgba(91,61,245,.15)}
+
+.page{padding:22px 16px}
+.page h2{margin:0 0 14px;font-size:22px;font-weight:800}
+.empty{text-align:center;color:var(--muted);padding:50px 20px;font-size:14px}
+.toast{position:fixed;bottom:96px;left:50%;transform:translate(-50%,20px);background:#14183a;color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:9}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.prof{display:grid;gap:10px}
+.prof div{background:#fff;border-radius:14px;padding:14px;font-weight:600}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
 </head>
 <body>
-<header class="site-header">
-  <a class="brand" href="#home" aria-label="Alfrzo home"><span class="brand-mark">⌂</span><span>Alfrzo</span></a>
-  <nav class="desktop-nav"><a href="#home">Home</a><a href="#rooms">Rooms</a><a href="#cities">Cities</a><a href="#about">About</a><a href="#owner">For Owners</a></nav>
-  <div class="head-actions"><a class="icon-link desktop-heart" href="#saved" aria-label="Saved rooms">♡</a><button class="login-mini" onclick="user?logout():openAuth()">Login</button><a class="list-property" href="#owner">List Your Property</a></div>
-</header>
-<div class="mobile-drawer" id="mobileDrawer" aria-label="Main menu">
-  <div class="drawer-brand"><span class="brand-mark">⌂</span><b>Alfrzo</b><button class="drawer-close" onclick="closeMobileMenu()" aria-label="Close menu">×</button></div>
-  <a href="#home" onclick="closeMobileMenu()"><span>⌂</span> Home</a><a href="#rooms" onclick="closeMobileMenu()"><span>⌕</span> Find Rooms</a><a href="#cities" onclick="closeMobileMenu()"><span>⌖</span> Popular Cities</a><a href="#saved" onclick="closeMobileMenu()"><span>♡</span> Saved Rooms</a><a href="#dashboard" onclick="closeMobileMenu()"><span>▣</span> My Bookings & Profile</a>
-  <div class="drawer-owner-title">FOR ROOM OWNERS</div>
-  <a href="#dashboard" onclick="closeMobileMenu()"><span>▦</span> Owner Dashboard</a><a href="#owner" onclick="closeMobileMenu()"><span>＋</span> List Your Property</a><a href="#ownerBookings" onclick="closeMobileMenu();loadOwnerBookings()"><span>▤</span> Booking Requests</a>
-  <button class="drawer-account" onclick="user?logout():openAuth();closeMobileMenu()">Login / Logout</button>
+<div class="app">
+  <main id="view"></main>
+  <nav class="tabs" id="tabs">
+    <button data-tab="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</button>
+    <button data-tab="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Search</button>
+    <button data-tab="saved"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.4-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.600-8 11-8 11z"/></svg>Saved</button>
+    <button data-tab="bookings"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6"/></svg>Bookings</button>
+    <button data-tab="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Profile</button>
+  </nav>
+  <div class="toast" id="toast"></div>
 </div>
+<script>
+const CITIES=[
+{n:'Bengaluru',g:'linear-gradient(160deg,#f6a54a,#8a3b2a)'},
+{n:'Hyderabad',g:'linear-gradient(160deg,#ff8a4c,#7a2f4a)'},
+{n:'Pune',g:'linear-gradient(160deg,#f2b35e,#5a4a7a)'},
+{n:'Mumbai',g:'linear-gradient(160deg,#4b8bd6,#1d2a5a)'},
+{n:'Delhi',g:'linear-gradient(160deg,#e9a35b,#7a3d3d)'}];
+const BG=['linear-gradient(135deg,#d9c3a5,#8a6a4f)','linear-gradient(135deg,#b9cbe0,#5f7894)','linear-gradient(135deg,#e6cfc0,#a8785f)','linear-gradient(135deg,#c9d8c4,#6f8f6a)'];
+const ROOMS=[
+{id:1,t:'Modern PG with Food',a:'HSR Layout',c:'Bengaluru',p:12000,type:'PG',tags:['PG','Food','WiFi'],r:4.5,n:120},
+{id:2,t:'Single Room',a:'Kondapur',c:'Hyderabad',p:16000,type:'Single',tags:['Single','AC','WiFi'],r:4.3,n:89},
+{id:3,t:'Shared Room near Metro',a:'Koregaon Park',c:'Pune',p:7500,type:'Shared',tags:['Shared','WiFi','Meals'],r:4.1,n:64},
+{id:4,t:'Studio Flat',a:'Andheri East',c:'Mumbai',p:22000,type:'Flat',tags:['Flat','AC','Parking'],r:4.6,n:41},
+{id:5,t:'Girls PG',a:'Whitefield',c:'Bengaluru',p:9500,type:'PG',tags:['PG','Food','Security'],r:4.4,n:98}];
 
-<section class="hero" id="home">
-  <div class="hero-bg"></div><div class="hero-content">
-    <div class="hero-topline"><button class="hero-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false">☰</button><span class="hero-logo-mark">⌂</span><span class="hero-brand">Alfrzo</span><span class="hero-spacer"></span><a href="#saved" class="hero-icon" aria-label="Saved rooms">♡</a><button class="hero-icon" aria-label="Notifications" onclick="toast('You are all caught up!')">♧</button></div>
-    <div class="hero-copy"><p class="eyebrow">VERIFIED ROOMS · SAFE LIVING · ACROSS INDIA</p><h1>Find a place<br>that feels like <span>Home</span></h1><p class="hero-subtitle">Verified rooms&nbsp; • &nbsp;Safe living&nbsp; • &nbsp;Across India</p></div>
-  </div>
-  <div class="search-panel"><div class="search-field"><span>⌖</span><select id="citySelect" aria-label="City"><option value="">Bengaluru</option><option>Hyderabad</option><option>Pune</option><option>Mumbai</option><option>Delhi</option><option>Chennai</option></select></div>
-    <div class="search-field"><span>₹</span><select id="budgetSelect" aria-label="Budget"><option value="">Budget</option><option value="5000">Up to ₹5,000</option><option value="10000">Up to ₹10,000</option><option value="15000">Up to ₹15,000</option><option value="20000">Up to ₹20,000</option><option value="30000">Up to ₹30,000</option></select></div>
-    <div class="search-field"><span>⌂</span><select id="type" aria-label="Room type"><option value="">Room Type</option><option>PG</option><option>Single Room</option><option>Shared Room</option><option>1BHK</option><option>2BHK</option></select></div>
-    <button class="search-submit" onclick="applyHomeSearch()"><span>⌕</span> Search Rooms</button>
-    <input id="location" type="hidden" value=""><input id="maxRent" type="hidden" value=""><input id="gender" type="hidden" value=""><input id="furnishing" type="hidden" value="">
-    <div class="advanced-filters"><label><input class="facility" value="Wi-Fi" type="checkbox"> Wi-Fi</label><label><input class="facility" value="AC" type="checkbox"> AC</label><label><input class="facility" value="Food" type="checkbox"> Food</label><label><input class="facility" value="Parking" type="checkbox"> Parking</label><label><input class="facility" value="Attached Bathroom" type="checkbox"> Attached Bath</label></div>
-  </div>
-  <div class="hero-trust"><div><span class="trust-icon purple">✓</span><span><b>Verified</b><small>Only genuine rooms</small></span></div><div><span class="trust-icon green">₹</span><span><b>No Brokerage</b><small>Direct contact with owners</small></span></div><div><span class="trust-icon pink">♙</span><span><b>Safe & Secure</b><small>Verified profiles</small></span></div><div><span class="trust-icon yellow">ϟ</span><span><b>Easy Booking</b><small>Quick and hassle-free</small></span></div></div>
-</section>
+const S={tab:'home',city:'Bengaluru',budget:'',type:'',saved:new Set(),bookings:[]};
+const $=s=>document.querySelector(s), view=$('#view');
+const ic={
+pin:'<path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',
+inr:'<path d="M7 5h10M7 9h10M7 5c6 0 6 8 0 8l7 6"/>',
+home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>',
+find:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
+heart:'<path d="M12 21s-8-5.4-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.600-8 11-8 11z"/>',
+bell:'<path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/>',
+menu:'<path d="M3 6h18M3 12h18M3 18h18"/>',
+chev:'<path d="M6 9l6 6 6-6"/>',
+shield:'<path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6z"/><path d="M8.500 12l2.500 2.500 4.500-5"/>',
+lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'};
+const svg=(k,c='')=>`<svg class="${c}" viewBox="0 0 24 24">${ic[k]}</svg>`;
+const inr=n=>'₹'+n.toLocaleString('en-IN');
 
-<main>
-<section class="section cities-section" id="cities"><div class="section-heading"><div><h2>Popular Cities</h2><p>Find rooms in India's top cities</p></div><a href="#rooms" class="view-all">View All →</a></div><div class="city-strip">
-  <button class="city-card" style="--city-image:url('https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=600&q=85')" onclick="selectCity('Bengaluru')"><b>Bengaluru</b><small>5K+ Rooms</small></button>
-  <button class="city-card" style="--city-image:url('https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?auto=format&fit=crop&w=600&q=85')" onclick="selectCity('Hyderabad')"><b>Hyderabad</b><small>4K+ Rooms</small></button>
-  <button class="city-card" style="--city-image:url('https://images.unsplash.com/photo-1595658658481-d53d3f999875?auto=format&fit=crop&w=600&q=85')" onclick="selectCity('Pune')"><b>Pune</b><small>3K+ Rooms</small></button>
-  <button class="city-card" style="--city-image:url('https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=600&q=85')" onclick="selectCity('Mumbai')"><b>Mumbai</b><small>6K+ Rooms</small></button>
-  <button class="city-card" style="--city-image:url('https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=600&q=85')" onclick="selectCity('Delhi')"><b>Delhi</b><small>4K+ Rooms</small></button>
-  <button class="city-card" style="--city-image:url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=85')" onclick="selectCity('Chennai')"><b>Chennai</b><small>3K+ Rooms</small></button>
-</div></section>
-<section class="section benefits-section" id="about"><div class="section-heading"><div><h2>Why Choose Alfrzo</h2><p>A better way to find your next home</p></div></div><div class="benefit-grid"><article><span class="benefit-icon purple">✓</span><div><b>Verified Listings</b><small>Only genuine rooms and property owners</small></div></article><article><span class="benefit-icon green">₹</span><div><b>No Brokerage</b><small>Direct contact with owners</small></div></article><article><span class="benefit-icon pink">♥</span><div><b>Safe & Secure</b><small>Verified profiles & secure communication</small></div></article><article><span class="benefit-icon yellow">ϟ</span><div><b>Easy Booking</b><small>Quick and hassle-free process</small></div></article></div></section>
-<section class="section rooms-section" id="rooms"><div class="section-heading rooms-heading"><div><h2>Featured Rooms</h2><p id="resultText">Handpicked rooms for you</p></div><div class="room-controls"><div class="type-pills"><button class="active" onclick="quickType('',this)">All</button><button onclick="quickType('PG',this)">PG</button><button onclick="quickType('1BHK',this)">Flat</button><button onclick="quickType('Shared Room',this)">Shared Room</button><button onclick="quickType('Single Room',this)">Single Room</button></div><select id="sort" onchange="render()"><option value="recommended">Recommended</option><option value="low">Rent: Low to High</option><option value="high">Rent: High to Low</option></select><a href="#rooms" class="view-all">View All →</a></div></div><div id="roomGrid" class="room-grid"></div></section>
-<section class="owner-banner"><div class="owner-banner-mark">⌂</div><div><h2>List Your Property on Alfrzo</h2><p>Reach thousands of verified tenants. It's free and easy!</p></div><a href="#owner">List Now →</a></section>
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),1800)}
 
-<section id="myBookings" class="section my-bookings"><div class="section-heading"><div><h2>My Bookings</h2><p>Track the room requests you have sent.</p></div></div><div id="myBookingList"><p class="muted">Log in to view your booking requests.</p></div></section>
-<section id="saved" class="section saved"><div class="section-heading"><div><h2>♡ Saved Rooms</h2><p>Rooms you have saved for later.</p></div></div><div id="savedGrid" class="room-grid"></div></section>
-<section id="compare" class="section compare"><div class="section-heading"><div><h2>Compare Rooms</h2><p>Select up to 3 rooms and compare costs and facilities.</p></div><button class="secondary" onclick="clearCompare()">Clear</button></div><div id="compareGrid" class="compare-table"></div></section>
-<section id="dashboard" class="section dashboard"><h2>My Dashboard</h2><div class="userbar"><span id="userStatus">Not logged in</span><button onclick="openAuth()">Login / Sign up</button></div><div class="stats"><div><strong id="statListings">0</strong><span>My Listings</span></div><div><strong id="statSaved">0</strong><span>Saved Rooms</span></div><div><strong id="statBookings">0</strong><span>Booking Requests</span></div><div><strong id="statReports">0</strong><span>Reports</span></div></div><div id="myListings" class="room-grid dashboard-list"></div><div id="ownerBookings" class="owner-bookings"><h3>Booking Requests for My Rooms</h3><div id="ownerBookingList"><p class="muted">Log in as an owner to view requests.</p></div></div></section>
-<section id="owner" class="section owner"><div class="section-heading"><div><p class="eyebrow">FOR OWNERS</p><h2>Have a room to list?</h2><p>Publish your room with photos, pricing, facilities and contact details.</p></div></div><form id="listingForm"><input type="hidden" id="editId"><div class="row"><input required id="fTitle" placeholder="Listing title"><input required id="fArea" placeholder="Area, City"></div><div class="row"><input required id="fRent" type="number" min="0" placeholder="Monthly rent ₹"><input id="fDeposit" type="number" min="0" placeholder="Security deposit ₹"></div><div class="row"><input id="fElectricity" type="number" min="0" placeholder="Electricity ₹/month"><input id="fWater" type="number" min="0" placeholder="Water ₹/month"></div><div class="row"><input id="fWifiCharge" type="number" min="0" placeholder="Wi-Fi ₹/month"><input id="fAvailable" type="date"></div><div class="row"><select id="fType"><option>Single Room</option><option>Shared Room</option><option>PG</option><option>1BHK</option><option>2BHK</option></select><select id="fGender"><option>Anyone</option><option>Men</option><option>Women</option><option>Family</option></select></div><div class="row"><select id="fFurnishing"><option>Furnished</option><option>Semi-furnished</option><option>Unfurnished</option></select><input id="fPhone" required placeholder="WhatsApp number e.g. 919876543210"></div><div class="row"><input id="fImage" placeholder="Main photo URL"><input id="fPhotos" placeholder="More photo URLs, separated by comma"></div><input id="fVideo" placeholder="Room video URL (optional)"><input id="fFacilities" placeholder="Facilities: Wi-Fi, AC, Parking, Food, Attached Bathroom"><input id="fNearby" placeholder="Nearby: Metro, Bus stop, Market, Hospital"><textarea id="fRules" placeholder="Owner rules"></textarea><textarea id="fDesc" placeholder="Short description"></textarea><button id="listingSubmit">Publish Online Listing</button><button type="button" class="secondary" id="cancelEdit" onclick="resetListingForm()" style="display:none">Cancel Edit</button></form></section>
-</main>
-<nav class="mobile-bottom-nav"><a class="selected" href="#home"><span>⌂</span>Home</a><a href="#rooms"><span>⌕</span>Search</a><a href="#saved"><span>♡</span>Saved</a><a href="#myBookings"><span>▣</span>Bookings</a><a href="#dashboard"><span>♙</span>Profile</a></nav>
-<div id="modal" class="modal" onclick="closeModal(event)"><div class="modal-card" onclick="event.stopPropagation()"><button class="close" onclick="closeModal()">×</button><div id="modalGallery" class="gallery"></div><div class="modal-body"><div id="modalType" class="muted"></div><h2 id="modalTitle"></h2><p id="modalArea" class="muted"></p><div id="modalPrice" class="price"></div><div id="modalTotal" class="total-cost"></div><div id="modalTags" class="tags"></div><p id="modalDesc"></p><p id="modalDeposit" class="muted"></p><p id="modalNearby" class="muted"></p><p id="modalRules" class="muted"></p><div class="modal-actions"><a id="modalMap" class="call" target="_blank" rel="noopener">Map</a><a id="modalWa" class="wa" target="_blank" rel="noopener">WhatsApp</a><a id="modalCall" class="call">Call</a><button id="modalSave" class="save">♡ Save</button><button id="modalCompare" class="compare-btn">Compare</button><button id="modalBook">Request Booking</button><button id="modalReport" class="report">Report</button></div><div id="reviewArea"></div></div></div></div>
-<div id="authModal" class="modal"><div class="auth-card"><button class="close" onclick="closeAuth()">×</button><p class="eyebrow">WELCOME TO ALFRZO</p><h2 id="authTitle">Log in to Alfrzo</h2><p id="authHint" class="muted">Use email and password.</p><input id="authEmail" type="email" placeholder="Email"><input id="authPassword" type="password" placeholder="Password"><button onclick="submitAuth()">Continue</button><button class="secondary" onclick="switchAuth()">Create account</button><p id="authMsg" class="auth-msg"></p></div></div>
-<footer>© 2026 Alfrzo · Find a place that feels like Home</footer>
-<script src="script.js"></script>
-</body></html>
+function matches(r){
+ if(S.city&&r.c!==S.city)return false;
+ if(S.budget&&r.p>+S.budget)return false;
+ if(S.type&&r.type!==S.type)return false;
+ return true}
+
+function roomCard(r,i){return `<article class="room">
+ <div class="pic" style="background:${BG[i%BG.length]}"><button class="heart ${S.saved.has(r.id)?'on':''}" data-save="${r.id}" aria-label="Save">${svg('heart')}</button></div>
+ <div class="info"><div><h3>${r.t}</h3><div class="loc">${r.a}, ${r.c}</div></div>
+ <div class="price">${inr(r.p)}/month</div>
+ <div class="tags">${r.tags.map(x=>`<span>${x}</span>`).join('')}</div>
+ <div class="row"><span class="rate">${r.r} <s>(${r.n})</s></span><button class="book" data-book="${r.id}">Book</button></div></div></article>`}
+
+const opts=(arr,sel)=>arr.map(([v,l])=>`<option value="${v}" ${v==sel?'selected':''}>${l}</option>`).join('');
+function searchBox(){return `<section class="search">
+ <label class="field">${svg('pin')}<select id="city">${opts(CITIES.map(c=>[c.n,c.n]),S.city)}</select>${svg('chev','chev')}</label>
+ <label class="field">${svg('inr')}<select id="budget">${opts([['','Budget'],['8000','Up to ₹8,000'],['12000','Up to ₹12,000'],['16000','Up to ₹16,000'],['25000','Up to ₹25,000']],S.budget)}</select>${svg('chev','chev')}</label>
+ <label class="field">${svg('home')}<select id="type">${opts([['','Room Type'],['PG','PG'],['Single','Single Room'],['Shared','Shared Room'],['Flat','Flat']],S.type)}</select>${svg('chev','chev')}</label>
+ <button class="go" id="go">${svg('find')} Search Rooms</button></section>`}
+
+function listHTML(arr,msg){return arr.length?`<div class="list">${arr.map(roomCard).join('')}</div>`:`<div class="empty">${msg}</div>`}
+
+function home(){
+ const pf=[['shield','Verified','#ece8ff','#5b3df5'],['inr','No Brokerage','#dff5ea','#17a05d'],['lock','Safe & Secure','#ffe3f1','#e0247f'],['bolt','Easy Booking','#fff1d6','#f5a000']];
+ return `<header class="hero"><div class="bar">${svg('menu')}<div class="logo"><i>${svg('home')}</i>Alfrzo</div>${svg('heart')}${svg('bell')}</div>
+ <h1>Find a place<br>that feels like <em>Home</em></h1><p>Verified rooms • Safe living • Across India</p></header>
+ ${searchBox()}
+ <div class="perks">${pf.map(([i,l,bg,c])=>`<div><b style="background:${bg};color:${c}">${svg(i)}</b>${l}</div>`).join('')}</div>
+ <div class="sec"><h2>Popular Cities</h2><a data-go="search">View All →</a></div>
+ <div class="cities">${CITIES.map(c=>`<button class="city ${c.n==S.city?'on':''}" data-city="${c.n}" style="background:${c.g}">${c.n}</button>`).join('')}</div>
+ <div class="sec"><h2>Featured Rooms</h2><a data-go="search">View All →</a></div>
+ ${listHTML(ROOMS.filter(matches).slice(0,3),'No rooms match. Change city or budget.')}`}
+
+function search(){return `<div class="page"><h2>Search rooms</h2></div>${searchBox()}<div style="height:14px"></div>${listHTML(ROOMS.filter(matches),'No rooms match. Try a higher budget.')}`}
+function saved(){return `<div class="page"><h2>Saved</h2></div>${listHTML(ROOMS.filter(r=>S.saved.has(r.id)),'Tap the heart on a room to save it here.')}`}
+function bookings(){return `<div class="page"><h2>Bookings</h2></div>${listHTML(ROOMS.filter(r=>S.bookings.includes(r.id)),'No bookings yet. Pick a room and tap Book.')}`}
+function profile(){return `<div class="page"><h2>Profile</h2><div class="prof"><div>Saved rooms: ${S.saved.size}</div><div>Bookings: ${S.bookings.length}</div><div>City: ${S.city}</div></div></div>`}
+
+const PAGES={home,search,saved,bookings,profile};
+function render(){
+ view.innerHTML=PAGES[S.tab]();
+ document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===S.tab));
+}
+function go(t){S.tab=t;render();window.scrollTo(0,0)}
+
+document.addEventListener('click',e=>{
+ const q=s=>e.target.closest(s);
+ let el;
+ if(el=q('[data-tab]'))return go(el.dataset.tab);
+ if(el=q('[data-go]'))return go(el.dataset.go);
+ if(el=q('[data-city]')){S.city=el.dataset.city;render();return toast('Showing rooms in '+S.city)}
+ if(el=q('[data-save]')){const id=+el.dataset.save;S.saved.has(id)?S.saved.delete(id):S.saved.add(id);toast(S.saved.has(id)?'Saved':'Removed from saved');return render()}
+ if(el=q('[data-book]')){const id=+el.dataset.book;if(S.bookings.includes(id))return toast('Already booked');S.bookings.push(id);return toast('Booking requested')}
+ if(q('#go')){S.city=$('#city').value;S.budget=$('#budget').value;S.type=$('#type').value;const n=ROOMS.filter(matches).length;S.tab='search';render();toast(n+' rooms found')}
+});
+render();
+</script>
+</body>
+</html>
