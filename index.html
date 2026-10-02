@@ -1,131 +1,53 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Alfrzo — find rooms, PGs and flats with clear pricing and owner listings.">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Alfrzo — find rooms, PGs and flats with clear pricing and direct owner contact.">
 <title>Alfrzo — Find a place that feels like Home</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script>
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="#"><span class="brand-mark">A</span><span>Alfrzo</span></a>
-  <nav class="desktop-nav">
-    <a href="#rooms">Explore</a><a href="#rooms">Find a Room</a><a href="#locations">Locations</a><a href="#how">How it works</a>
-  </nav>
-  <div class="head-actions">
-    <a class="list-link" href="#owner">List your room</a>
-    <button class="login-mini" onclick="openAuth()">Log in</button>
-    <button class="icon-btn theme" onclick="toggleTheme()" aria-label="Toggle theme">☾</button>
-    <button class="mobile-menu" aria-label="Menu">☰</button>
-  </div>
+  <a class="brand" href="#top" aria-label="Alfrzo home"><span class="brand-mark">A</span><strong>Alfrzo</strong></a>
+  <nav class="desktop-nav"><a href="#rooms">Rooms</a><a href="#locations">Cities</a><a href="#how">About</a><a href="#owner">For Owners</a></nav>
+  <div class="head-actions"><button class="heart-head" onclick="document.getElementById('saved').scrollIntoView({behavior:'smooth'})" aria-label="Saved">♡</button><button class="login-mini" onclick="openAuth()">Login</button><button class="mobile-menu" onclick="toggleSideMenu()" aria-label="Open menu">☰</button></div>
 </header>
-
-<section class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <div class="trust-pills"><span>✓ Verified listings</span><span>♡ Save favourites</span><span>24/7 support</span></div>
-      <h1>Find a room that feels <em>right.</em></h1>
-      <p>Discover rooms, PGs and flats in the cities you want to live in — with clear rent, real facilities and direct owner contact.</p>
-    </div>
-    <div class="hero-search">
-      <div class="search-title">Where do you want to live?</div>
-      <div class="search-row">
-        <div class="search-field"><span>⌕</span><input id="location" placeholder="City, area or property"></div>
-        <button onclick="searchRooms()" class="search-submit">Search <span>→</span></button>
-      </div>
-      <div class="quick-filters">
-        <select id="maxRent"><option value="">Any budget</option><option value="5000">Under ₹5,000</option><option value="8000">Under ₹8,000</option><option value="12000">Under ₹12,000</option><option value="20000">Under ₹20,000</option></select>
-        <select id="type"><option value="">Any room type</option><option>Single Room</option><option>Shared Room</option><option>PG</option><option>1BHK</option><option>2BHK</option></select>
-        <select id="gender"><option value="">For anyone</option><option>Men</option><option>Women</option><option>Family</option></select>
-        <select id="furnishing"><option value="">Any furnishing</option><option>Furnished</option><option>Semi-furnished</option><option>Unfurnished</option></select>
-        <button class="reset-btn" onclick="clearFilters()">Reset</button>
-      </div>
-    </div>
+<div id="sideMenu" class="side-menu" aria-hidden="true"><div class="side-head"><strong>Alfrzo</strong><button onclick="toggleSideMenu()">×</button></div><a href="#rooms" onclick="toggleSideMenu()">Rooms</a><a href="#locations" onclick="toggleSideMenu()">Cities</a><a href="#how" onclick="toggleSideMenu()">About</a><a href="#owner" onclick="toggleSideMenu()">For Owners</a><a href="#saved" onclick="toggleSideMenu()">Saved</a><button onclick="openAuth();toggleSideMenu()">Login / Sign up</button></div>
+<div id="menuShade" class="menu-shade" onclick="toggleSideMenu()"></div>
+<main id="top">
+<section class="hero"><div class="hero-bg"></div><div class="hero-inner">
+  <div class="trust-pills"><span>✓ Verified listings</span><span>♡ Save favourites</span><span>24/7 support</span></div>
+  <div class="hero-copy"><h1>Find a place<br>that feels <em>right.</em></h1><p>Discover rooms, PGs and flats in the cities you want to live in — with clear rent, real facilities and direct owner contact.</p></div>
+  <div class="hero-search"><div class="search-title">Where do you want to live?</div><div class="search-row"><label class="search-field"><span>⌕</span><input id="location" placeholder="Bengaluru" aria-label="City or area"></label><button class="search-submit" onclick="searchRooms()">Search <b>→</b></button></div>
+    <div class="quick-filters"><select id="maxRent"><option value="">Any budget</option><option value="5000">Under ₹5,000</option><option value="8000">Under ₹8,000</option><option value="12000">Under ₹12,000</option><option value="20000">Under ₹20,000</option></select><select id="type"><option value="">Room type</option><option>Single Room</option><option>Shared Room</option><option>PG</option><option>1BHK</option><option>2BHK</option></select><select id="gender"><option value="">For anyone</option><option>Men</option><option>Women</option><option>Family</option></select><select id="furnishing"><option value="">Furnishing</option><option>Furnished</option><option>Semi-furnished</option><option>Unfurnished</option></select><button class="reset-btn" onclick="clearFilters()">Reset</button></div>
   </div>
-</section>
-
-<section class="stats-strip">
-  <div><strong>Verified</strong><span>Room details</span></div>
-  <div><strong>Clear pricing</strong><span>Monthly cost shown</span></div>
-  <div><strong>Direct contact</strong><span>Talk to owners</span></div>
-  <div><strong>Easy search</strong><span>Find by city or area</span></div>
-</section>
-
-<section id="locations" class="section locations">
-  <div class="section-head">
-    <div><span class="eyebrow">EXPLORE CITIES</span><h2>Popular cities</h2><p>Start with a city and find a room that fits your life.</p></div>
-    <a href="#rooms">View all →</a>
-  </div>
-  <div class="city-grid">
-    <button onclick="pickCity('Bengaluru')" class="city-card"><img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=900&q=80"><span>Bengaluru</span><small>Rooms & PGs</small></button>
-    <button onclick="pickCity('Hyderabad')" class="city-card"><img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=900&q=80"><span>Hyderabad</span><small>Rooms & PGs</small></button>
-    <button onclick="pickCity('Pune')" class="city-card"><img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=900&q=80"><span>Pune</span><small>Rooms & PGs</small></button>
-    <button onclick="pickCity('Mumbai')" class="city-card"><img src="https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?auto=format&fit=crop&w=900&q=80"><span>Mumbai</span><small>Rooms & PGs</small></button>
-    <button onclick="pickCity('Chennai')" class="city-card"><img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=900&q=80"><span>Chennai</span><small>Rooms & PGs</small></button>
-    <button onclick="pickCity('Mysuru')" class="city-card"><img src="https://images.unsplash.com/photo-1600100397608-f010e5f8f4f2?auto=format&fit=crop&w=900&q=80"><span>Mysuru</span><small>Rooms & PGs</small></button>
-  </div>
-</section>
-
-<section id="rooms" class="section listings">
-  <div class="section-head">
-    <div><span class="eyebrow">FIND YOUR PLACE</span><h2>Available rooms</h2><p id="resultText">Loading listings...</p></div>
-    <select id="sort" onchange="render()" class="sort-select"><option value="recommended">Recommended</option><option value="low">Rent: Low to High</option><option value="high">Rent: High to Low</option></select>
-  </div>
-  <div id="roomGrid" class="grid"></div>
-</section>
-
-<section class="benefit-band">
-  <div><span>01</span><h3>Search simply</h3><p>Filter by area, budget, room type and furnishing.</p></div>
-  <div><span>02</span><h3>Compare clearly</h3><p>See rent, extra costs and facilities side by side.</p></div>
-  <div><span>03</span><h3>Contact directly</h3><p>Save a room or message the owner when ready.</p></div>
-</section>
-
-<section id="saved" class="section saved"><div class="section-head"><div><span class="eyebrow">YOUR SHORTLIST</span><h2>Saved rooms</h2><p>Keep the places you want to revisit.</p></div></div><div id="savedGrid" class="grid"></div></section>
-
+</div></section>
+<section class="benefits"><div><i>♢</i><strong>Verified Listings</strong><span>Only genuine rooms</span></div><div><i>₹</i><strong>No Brokerage</strong><span>Direct contact with owners</span></div><div><i>♡</i><strong>Safe &amp; Secure</strong><span>Verified profiles &amp; secure communication</span></div><div><i>ϟ</i><strong>Easy Booking</strong><span>Quick and hassle-free</span></div></section>
+<section id="locations" class="section"><div class="section-head"><div><span class="eyebrow">EXPLORE CITIES</span><h2>Popular Cities</h2><p>Find rooms in India's top cities</p></div><a href="#rooms">View All →</a></div><div class="city-grid">
+<button class="city-card" onclick="pickCity('Bengaluru')"><img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=900&q=80" onerror="this.src='https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=900&q=80'"><span>Bengaluru</span><small>5K+ Rooms</small></button>
+<button class="city-card" onclick="pickCity('Hyderabad')"><img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=900&q=80"><span>Hyderabad</span><small>4K+ Rooms</small></button>
+<button class="city-card" onclick="pickCity('Pune')"><img src="https://images.unsplash.com/photo-1600100397608-f010e5f8f4f2?auto=format&fit=crop&w=900&q=80"><span>Pune</span><small>3K+ Rooms</small></button>
+<button class="city-card" onclick="pickCity('Mumbai')"><img src="https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?auto=format&fit=crop&w=900&q=80"><span>Mumbai</span><small>6K+ Rooms</small></button>
+<button class="city-card" onclick="pickCity('Delhi')"><img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=900&q=80"><span>Delhi</span><small>4K+ Rooms</small></button>
+<button class="city-card" onclick="pickCity('Chennai')"><img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=900&q=80"><span>Chennai</span><small>3K+ Rooms</small></button>
+</div></section>
+<section class="why section"><div class="section-head"><div><span class="eyebrow">WHY CHOOSE ALFRZO</span><h2>A better way to find your next home</h2></div></div><div class="why-grid"><div><i>✓</i><h3>Verified Listings</h3><p>Only genuine rooms and property owners.</p></div><div><i>₹</i><h3>No Brokerage</h3><p>Direct contact with owners.</p></div><div><i>♡</i><h3>Safe &amp; Secure</h3><p>Verified profiles and secure communication.</p></div><div><i>ϟ</i><h3>Easy Booking</h3><p>Quick and hassle-free process.</p></div></div></section>
+<section id="rooms" class="section listings"><div class="section-head"><div><span class="eyebrow">FIND YOUR PLACE</span><h2>Featured Rooms</h2><p id="resultText">Loading listings...</p></div><select id="sort" onchange="render()" class="sort-select"><option value="recommended">Recommended</option><option value="low">Rent: Low to High</option><option value="high">Rent: High to Low</option></select></div><div id="roomGrid" class="room-grid"></div></section>
+<section class="owner-banner"><div><strong>List Your Property on Alfrzo</strong><span>Reach thousands of verified tenants. It's free and easy!</span></div><a href="#owner">List Now →</a></section>
+<section class="benefit-band" id="how"><div><span>01</span><h3>Search simply</h3><p>Choose city, area, budget and room type.</p></div><div><span>02</span><h3>Explore clearly</h3><p>Check facilities, rent and room photos.</p></div><div><span>03</span><h3>Connect directly</h3><p>Save, compare and contact the owner.</p></div></section>
+<section id="saved" class="section saved"><div class="section-head"><div><span class="eyebrow">YOUR SHORTLIST</span><h2>Saved rooms</h2><p>Keep the places you want to revisit.</p></div></div><div id="savedGrid" class="room-grid"></div></section>
 <section id="compare" class="section compare"><div class="section-head"><div><span class="eyebrow">DECIDE WITH CONFIDENCE</span><h2>Compare rooms</h2><p>Select up to 3 rooms and compare costs and facilities.</p></div><button class="outline-btn" onclick="clearCompare()">Clear</button></div><div id="compareGrid" class="compare-table"></div></section>
-
-<section id="how" class="how-section">
-  <div class="how-intro"><span class="eyebrow">HOW IT WORKS</span><h2>Room hunting, without the headache.</h2><p>Alfrzo brings the important details together so you can spend less time searching and more time choosing.</p></div>
-  <div class="how-grid"><div><b>1</b><h3>Search</h3><p>Choose your city, area and budget.</p></div><div><b>2</b><h3>Explore</h3><p>Open listings, check facilities and compare.</p></div><div><b>3</b><h3>Connect</h3><p>Contact the owner and request a booking.</p></div></div>
-</section>
-
-<section id="dashboard" class="dashboard section">
-  <div class="section-head"><div><span class="eyebrow">ACCOUNT</span><h2>My dashboard</h2></div></div>
-  <div class="userbar"><span id="userStatus">Not logged in</span><button onclick="openAuth()">Log in / Sign up</button></div>
-  <div class="stats"><div><strong id="statListings">0</strong><span>My listings</span></div><div><strong id="statSaved">0</strong><span>Saved rooms</span></div><div><strong id="statBookings">0</strong><span>Booking requests</span></div><div><strong id="statReports">0</strong><span>Reports</span></div></div>
-  <div id="myListings" class="grid dashboard-list"></div>
-</section>
-
-<section id="owner" class="owner section">
-  <div class="owner-copy"><span class="eyebrow">FOR OWNERS</span><h2>Have a room to list?</h2><p>Publish your room with photos, pricing, facilities and contact details.</p></div>
-  <form id="listingForm"><input type="hidden" id="editId">
-    <div class="row"><input required id="fTitle" placeholder="Listing title"><input required id="fArea" placeholder="Area, City"></div>
-    <div class="row"><input required id="fRent" type="number" min="0" placeholder="Monthly rent ₹"><input id="fDeposit" type="number" min="0" placeholder="Security deposit ₹"></div>
-    <div class="row"><input id="fElectricity" type="number" min="0" placeholder="Electricity ₹/month"><input id="fWater" type="number" min="0" placeholder="Water ₹/month"></div>
-    <div class="row"><input id="fWifiCharge" type="number" min="0" placeholder="Wi-Fi ₹/month"><input id="fAvailable" type="date"></div>
-    <div class="row"><select id="fType"><option>Single Room</option><option>Shared Room</option><option>PG</option><option>1BHK</option><option>2BHK</option></select><select id="fGender"><option>Anyone</option><option>Men</option><option>Women</option><option>Family</option></select></div>
-    <div class="row"><select id="fFurnishing"><option>Furnished</option><option>Semi-furnished</option><option>Unfurnished</option></select><input id="fPhone" required placeholder="WhatsApp number e.g. 919876543210"></div>
-    <div class="row"><input id="fImage" placeholder="Main photo URL"><input id="fPhotos" placeholder="More photo URLs, separated by comma"></div>
-    <input id="fVideo" placeholder="Room video URL (optional)"><input id="fFacilities" placeholder="Facilities: Wi-Fi, AC, Parking, Food, Attached Bathroom"><input id="fNearby" placeholder="Nearby: Metro, Bus stop, Market"><textarea id="fRules" placeholder="Owner rules"></textarea><textarea id="fDesc" placeholder="Short description"></textarea>
-    <button id="listingSubmit">Publish listing on Alfrzo</button><button type="button" class="secondary" id="cancelEdit" onclick="resetListingForm()" style="display:none">Cancel Edit</button>
-  </form>
-</section>
-
-<div id="modal" class="modal" onclick="closeModal(event)"><div class="modal-card" onclick="event.stopPropagation()"><button class="close" onclick="closeModal()">×</button><div id="modalGallery" class="gallery"></div><div class="modal-body"><div id="modalType" class="muted"></div><h2 id="modalTitle"></h2><p id="modalArea" class="muted"></p><div id="modalPrice" class="price"></div><div id="modalTotal" class="total-cost"></div><div id="modalTags" class="tags"></div><p id="modalDesc"></p><p id="modalDeposit" class="muted"></p><p id="modalNearby" class="muted"></p><p id="modalRules" class="muted"></p><div class="modal-actions"><a id="modalMap" class="call" target="_blank">📍 Map</a><a id="modalWa" class="wa" target="_blank">💬 WhatsApp</a><a id="modalCall" class="call">📞 Call</a><button id="modalSave" class="save">♡ Save</button><button id="modalCompare" class="compare-btn">⚖️ Compare</button><button id="modalBook">📅 Request Booking</button><button id="modalReport" class="report">🚩 Report</button></div><div id="reviewArea"></div></div></div></div>
-<div id="authModal" class="modal"><div class="auth-card"><button class="close" onclick="closeAuth()">×</button><span class="eyebrow">WELCOME TO ALFARZO</span><h2 id="authTitle">Log in to Alfarzo</h2><p id="authHint" class="muted">Use email and password.</p><input id="authEmail" type="email" placeholder="Email"><input id="authPassword" type="password" placeholder="Password"><button onclick="submitAuth()">Continue</button><button class="secondary" onclick="switchAuth()">Create account</button><p id="authMsg" class="auth-msg"></p></div></div>
-
-<footer><div class="footer-brand"><span class="brand-mark">A</span><strong>alfarzo</strong></div><p>Find a better place to live.</p><small>© 2026 Alfarzo. Built for room seekers and owners.</small></footer>
+<section id="dashboard" class="dashboard section"><div class="section-head"><div><span class="eyebrow">ACCOUNT</span><h2>My dashboard</h2></div></div><div class="userbar"><span id="userStatus">Not logged in</span><button onclick="openAuth()">Log in / Sign up</button></div><div class="stats"><div><strong id="statListings">0</strong><span>My listings</span></div><div><strong id="statSaved">0</strong><span>Saved rooms</span></div><div><strong id="statBookings">0</strong><span>Booking requests</span></div><div><strong id="statReports">0</strong><span>Reports</span></div></div><div id="myListings" class="room-grid"></div></section>
+<section id="owner" class="owner section"><div class="owner-copy"><span class="eyebrow">FOR OWNERS</span><h2>Have a room to list?</h2><p>Publish your room with photos, pricing, facilities and contact details.</p></div><form id="listingForm"><input type="hidden" id="editId"><div class="row"><input required id="fTitle" placeholder="Listing title"><input required id="fArea" placeholder="Area, City"></div><div class="row"><input required id="fRent" type="number" min="0" placeholder="Monthly rent ₹"><input id="fDeposit" type="number" min="0" placeholder="Security deposit ₹"></div><div class="row"><input id="fElectricity" type="number" min="0" placeholder="Electricity ₹/month"><input id="fWater" type="number" min="0" placeholder="Water ₹/month"></div><div class="row"><input id="fWifiCharge" type="number" min="0" placeholder="Wi-Fi ₹/month"><input id="fAvailable" type="date"></div><div class="row"><select id="fType"><option>Single Room</option><option>Shared Room</option><option>PG</option><option>1BHK</option><option>2BHK</option></select><select id="fGender"><option>Anyone</option><option>Men</option><option>Women</option><option>Family</option></select></div><div class="row"><select id="fFurnishing"><option>Furnished</option><option>Semi-furnished</option><option>Unfurnished</option></select><input id="fPhone" required placeholder="WhatsApp number"></div><div class="row"><input id="fImage" placeholder="Main photo URL"><input id="fPhotos" placeholder="More photo URLs, comma separated"></div><input id="fVideo" placeholder="Room video URL"><input id="fFacilities" placeholder="Facilities: Wi-Fi, AC, Parking, Food"><input id="fNearby" placeholder="Nearby: Metro, Bus stop, Market"><textarea id="fRules" placeholder="Owner rules"></textarea><textarea id="fDesc" placeholder="Short description"></textarea><button id="listingSubmit">Publish online listing</button><button type="button" class="secondary" id="cancelEdit" onclick="resetListingForm()" style="display:none">Cancel Edit</button></form></section>
+</main>
+<nav class="mobile-bottom"><a class="active" href="#top">⌂<span>Home</span></a><a href="#rooms">⌕<span>Search</span></a><a href="#saved">♡<span>Saved</span></a><a href="#dashboard">▣<span>Bookings</span></a><a href="#dashboard">○<span>Profile</span></a></nav>
+<div id="modal" class="modal" onclick="closeModal(event)"><div class="modal-card" onclick="event.stopPropagation()"><button class="close" onclick="closeModal()">×</button><div id="modalGallery" class="gallery"></div><div class="modal-body"><div id="modalType" class="muted"></div><h2 id="modalTitle"></h2><p id="modalArea"></p><div id="modalPrice" class="price"></div><p id="modalTotal" class="muted"></p><div id="modalTags" class="tags"></div><p id="modalDesc"></p><p id="modalDeposit"></p><p id="modalNearby"></p><p id="modalRules"></p><div class="modal-actions"><a id="modalWa" class="wa" target="_blank">WhatsApp</a><button id="modalCall">Call</button><a id="modalMap" target="_blank">Map</a><button id="modalSave">♡ Save</button><button id="modalCompare">⚖ Compare</button><button id="modalBook">Book</button><button id="modalReport">Report</button></div><div id="reviewArea"></div></div></div></div>
+<div id="authModal" class="modal" onclick="if(event.target.id==='authModal')closeAuth()"><div class="auth-card" onclick="event.stopPropagation()"><button class="close" onclick="closeAuth()">×</button><h2 id="authTitle">Login to Alfrzo</h2><input id="authEmail" type="email" placeholder="Email"><input id="authPassword" type="password" placeholder="Password"><button onclick="submitAuth()">Continue</button><button class="secondary" onclick="switchAuth()">Create account</button><p id="authMsg"></p></div></div>
 <script>
-function pickCity(city){ const el=document.getElementById('location'); if(el){el.value=city; searchRooms();} }
+function toggleSideMenu(){const m=document.getElementById('sideMenu'),s=document.getElementById('menuShade');const open=!m.classList.contains('open');m.classList.toggle('open',open);s.classList.toggle('open',open);m.setAttribute('aria-hidden',String(!open));document.body.classList.toggle('menu-open',open)}
+function pickCity(city){const el=document.getElementById('location');if(el){el.value=city;searchRooms()}}
 </script>
 <script src="script.js"></script>
-<nav class="mobile-bottom-nav" aria-label="Mobile navigation"><a class="active" href="#"><span>⌂</span>Home</a><a href="#rooms"><span>⌕</span>Search</a><a href="#saved"><span>♡</span>Saved</a><a href="#dashboard"><span>▣</span>Bookings</a><a href="#dashboard"><span>◯</span>Profile</a></nav>
-</body>
-</html>
+</body></html>
