@@ -162,7 +162,13 @@ function home(){
  <div class="sec"><h2>Featured Rooms</h2><a data-go="search">View All →</a></div>
  ${listHTML(ROOMS.filter(matches).slice(0,3),'No rooms match. Change city or budget.')}`}
 
-function search(){return `<div class="page"><h2>Search rooms</h2></div>${searchBox()}<div style="height:14px"></div>${listHTML(ROOMS.filter(matches),'No rooms match. Try a higher budget.')}`}
+function searchBox(){return `<section class="search">
+ <label class="field">${svg('pin')}<select id="city">${opts(CITIES.map(c=>[c.n,c.n]),S.city)}</select>${svg('chev','chev')}</label>
+ <label class="field">${svg('inr')}<select id="budget">${opts([['','Budget'],['8000','Up to ₹8,000'],['12000','Up to ₹12,000'],['16000','Up to ₹16,000'],['25000','Up to ₹25,000']],S.budget)}</select>${svg('chev','chev')}</label>
+ <label class="field">${svg('home')}<select id="type">${opts([['','Room Type'],['PG','PG'],['Single','Single Room'],['Shared','Shared Room'],['Flat','Flat']],S.type)}</select>${svg('chev','chev')}</label>
+ <button class="go" id="go">${svg('find')} Search Rooms</button></section>`}
+
+function search(){return `<div class="page" style="padding-bottom:60px"><h2>Search rooms</h2></div>${searchBox()}<div style="height:14px"></div>${listHTML(ROOMS.filter(matches),'No rooms match. Try a higher budget.')}`}
 function saved(){return `<div class="page"><h2>Saved</h2></div>${listHTML(ROOMS.filter(r=>S.saved.has(r.id)),'Tap the heart on a room to save it here.')}`}
 function bookings(){return `<div class="page"><h2>Bookings</h2></div>${listHTML(ROOMS.filter(r=>S.bookings.includes(r.id)),'No bookings yet. Pick a room and tap Book.')}`}
 function profile(){return `<div class="page"><h2>Profile</h2><div class="prof"><div>Saved rooms: ${S.saved.size}</div><div>Bookings: ${S.bookings.length}</div><div>City: ${S.city}</div></div></div>`}
