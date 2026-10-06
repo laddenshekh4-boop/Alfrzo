@@ -25,7 +25,7 @@ button{border:0;background:none;cursor:pointer}
 svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .hero{height:250px;padding:18px 18px 0;color:#fff;position:relative;overflow:hidden;background:linear-gradient(120deg,#2a1d6e,#5b3d9e 55%,#c0527a)}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(30,16,80,.35),rgba(24,12,70,.88)),radial-gradient(circle at 82% 28%,rgba(255,110,200,.38),transparent 28%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(30,16,80,.35),rgba(24,12,70,.88)),radial-gradient(circle at 82% 28%,rgba(255,110,200,.38),transp[...]
 .hero>*:not(img){position:relative;z-index:2}
 .bar{display:flex;align-items:center;gap:14px}
 .bar button{position:relative;color:#fff;display:grid;place-items:center;width:34px;height:34px}
@@ -40,7 +40,7 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .field{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;height:48px;margin-bottom:10px;background:#fff}
 .field select{flex:1;min-width:0;border:0;background:none;outline:0;font-size:15px;font-weight:500;appearance:none;-webkit-appearance:none;height:100%}
 .field .chev{width:16px;height:16px;opacity:.6}
-.go{width:100%;height:50px;border-radius:14px;color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(90deg,#2f45ff,#e84ef3)}
+.go{width:100%;height:50px;border-radius:14px;color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(90deg,#2f45ff,#e8[...]
 .perks{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:18px 14px 6px;text-align:center;font-size:12px;font-weight:600}
 .perks div{display:flex;flex-direction:column;align-items:center;gap:7px}
 .perks b{width:50px;height:50px;border-radius:14px;display:grid;place-items:center}
@@ -49,7 +49,7 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .sec a{color:var(--purple);font-weight:600;font-size:14px;cursor:pointer}
 .cities{display:flex;gap:10px;overflow-x:auto;padding:0 16px 4px;scrollbar-width:none}
 .cities::-webkit-scrollbar{display:none}
-.city{flex:0 0 96px;height:96px;border-radius:14px;color:#fff;font-size:12px;font-weight:700;position:relative;overflow:hidden;border:2px solid transparent;padding:0;background:#2a1d6e;transition:transform .16s ease}
+.city{flex:0 0 96px;height:96px;border-radius:14px;color:#fff;font-size:12px;font-weight:700;position:relative;overflow:hidden;border:2px solid transparent;padding:0;background:#2a1d6e;transition:[...]
 .city:active{transform:scale(.96)}
 .city img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .city::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,60,0) 35%,rgba(20,10,60,.85))}
@@ -77,7 +77,7 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .rate s{text-decoration:none;color:var(--muted);font-weight:500}
 .rate::before{content:"★ ";color:#f5a623}
 .book{background:var(--purple);color:#fff;border-radius:10px;padding:6px 12px;font-size:12px;font-weight:700}
-.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:var(--w);display:flex;justify-content:space-around;background:#fff;border-radius:22px 22px 0 0;padding:10px 4px 12px;box-shadow:0 -8px 28px rgba(30,20,80,.08)}
+.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:var(--w);display:flex;justify-content:space-around;background:#fff;border-radius:22px 22px 0 0;padding:10px 4[...]
 .tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:500;color:#2a2d4a;flex:1}
 .tabs button.on{color:var(--purple);font-weight:700}
 .tabs button.on svg{fill:rgba(91,61,245,.15)}
@@ -85,11 +85,11 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .page h2{margin:0 0 14px;font-size:22px;font-weight:800}
 .page p{color:var(--muted);font-size:14px;line-height:1.55;margin:0 0 10px}
 .empty{text-align:center;color:var(--muted);padding:50px 20px;font-size:14px}
-.toast{position:fixed;bottom:96px;left:50%;transform:translate(-50%,20px);background:#14183a;color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:all .2s ease}
+.toast{position:fixed;bottom:96px;left:50%;transform:translate(-50%,20px);background:#14183a;color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition[...]
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .prof{display:grid;gap:10px}
 .prof div{background:#fff;border-radius:14px;padding:14px;font-weight:600}
-.map-wrap{padding:0 14px 18px}.map-toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;margin:0 0 10px}.map-toolbar select{min-width:0;flex:1;border:1.5px solid var(--line);border-radius:10px;padding:7px 8px;background:#fff}
+.map-wrap{padding:0 14px 18px}.map-toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;margin:0 0 10px}.map-toolbar select{min-width:0;flex:1;border:1.5px solid var(--lin[...]
 .fp{margin:0 14px;background:#fff;border-radius:22px;padding:14px;box-shadow:0 14px 40px rgba(40,30,120,.12)}
 .fp h4{margin:6px 0 8px;font-size:13px;color:var(--muted);font-weight:600}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
@@ -106,7 +106,7 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 @keyframes sh{to{background-position:-200% 0}}
 .ov{position:fixed;inset:0;background:rgba(20,14,60,.55);opacity:0;pointer-events:none;transition:.25s;z-index:20}
 .ov.show{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;bottom:0;left:max(0px,calc(50% - var(--w)/2));width:min(310px,86vw);background:#fff;z-index:21;transform:translateX(-105%);transition:transform .25s;display:flex;flex-direction:column}
+.drawer{position:fixed;top:0;bottom:0;left:max(0px,calc(50% - var(--w)/2));width:min(310px,86vw);background:#fff;z-index:21;transform:translateX(-105%);transition:transform .25s;display:flex;flex[...]
 .drawer.show{transform:none;visibility:visible}
 .dh{display:flex;align-items:center;justify-content:space-between;padding:18px 16px;background:linear-gradient(120deg,#2a1d6e,#7a3fc0);color:#fff}
 .dh .logo{display:flex;align-items:center;gap:8px;font-size:22px;font-weight:800}
@@ -118,14 +118,14 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .dn .lg{display:flex;gap:8px;padding:10px 14px}
 .dn .lg button{width:auto;padding:8px 16px;border:1.5px solid var(--line);border-radius:20px;font-size:14px}
 .dn .lg button.on{background:var(--purple);color:#fff;border-color:var(--purple)}
-.sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,105%);width:100%;max-width:var(--w);background:#fff;border-radius:22px 22px 0 0;z-index:22;padding:18px 16px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -8px 28px rgba(30,20,80,.12)}
+.sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,105%);width:100%;max-width:var(--w);background:#fff;border-radius:22px 22px 0 0;z-index:22;padding:18px 16px calc(24px + env(safe-[...]
 .sheet.show{transform:translate(-50%,0);visibility:visible}
 .sheet h3{margin:0 0 10px;font-size:18px;display:flex;justify-content:space-between;align-items:center}
 .nt{padding:12px;border-radius:12px;background:#f6f5fc;margin-bottom:8px;font-size:14px}
 .nt.u{border-left:4px solid var(--purple)}
 body.lock{overflow:hidden}
 .demo{background:#fff6dd;border:1px solid #f1d98a;color:#6b5200;border-radius:12px;padding:10px 12px;font-size:12.5px;margin:0 0 12px;line-height:1.45}
-.odh{display:flex;align-items:center;gap:10px;padding:14px 14px 0;font-weight:800;font-size:17px}.odh button{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:#f0ecff;color:var(--ink)}
+.odh{display:flex;align-items:center;gap:10px;padding:14px 14px 0;font-weight:800;font-size:17px}.odh button{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:#[...]
 .od{padding:14px 14px 8px}.onav{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none}.onav::-webkit-scrollbar{display:none}
 .onav button{flex:0 0 auto;padding:8px 14px;border-radius:20px;border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:13px}
 .onav button.on{background:var(--purple);border-color:var(--purple);color:#fff}.onav .lo{color:#c0224f;border-color:#f3c3d0}
@@ -134,7 +134,7 @@ body.lock{overflow:hidden}
 .ostats b{display:block;font-size:24px}.ostats span{font-size:12px;color:var(--muted);font-weight:600}
 .pill{display:inline-block;border-radius:10px;padding:3px 9px;font-size:11px;font-weight:700;background:#eee;white-space:nowrap}
 .pill.pending{background:#fff1d6;color:#8a5a00}.pill.accepted{background:#dff5ea;color:#0f7a45}.pill.rejected{background:#ffe3e8;color:#b0214a}.pill.cancelled{background:#ececf3;color:#555}
-.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}.acts button,.acts select{border:1.5px solid var(--line);border-radius:10px;padding:6px 10px;font-size:12px;font-weight:700;background:#fff}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}.acts button,.acts select{border:1.5px solid var(--line);border-radius:10px;padding:6px 10px;font-size:12px;font-weight:700;background:#ff[...]
 .bk .info{gap:6px}.bk .loc{overflow-wrap:anywhere}.room h3{overflow-wrap:anywhere}
 .card{background:#fff;border-radius:14px;padding:12px;margin-bottom:8px;box-shadow:0 4px 16px rgba(40,30,120,.06)}
 .fg{margin-bottom:10px}.fg label,.chk{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:4px}.chk{margin:8px 0;color:var(--ink);font-size:14px}
@@ -143,8 +143,8 @@ body.lock{overflow:hidden}
 .phs{display:flex;gap:8px;flex-wrap:wrap}.phs label{position:relative;cursor:pointer;border:2px solid transparent;border-radius:10px;overflow:hidden;width:72px;height:58px;margin:0}
 .phs label:has(input:checked){border-color:var(--purple)}.phs input{position:absolute;opacity:0}.phs img{width:100%;height:100%;object-fit:cover}
 .av{width:72px;height:72px;border-radius:50%;object-fit:cover;background:#e1ddf8;margin-bottom:8px}
-@media(min-width:768px){.od{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start}.onav{flex-direction:column;overflow:visible}.onav button{text-align:left;border-radius:12px}.oc .list{grid-template-columns:1fr 1fr}}
-@media(min-width:768px){:root{--w:960px}.list{grid-template-columns:1fr 1fr}.cgrid{grid-template-columns:repeat(4,1fr)}.hero{height:300px;padding:24px 32px 0}.hero h1{font-size:40px}.search{max-width:900px;margin:-52px auto 0}.fp{max-width:900px;margin:0 auto}} 
+@media(min-width:768px){.od{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start}.onav{flex-direction:column;overflow:visible}.onav button{text-align:left;border-radius:12px}.o[...]
+@media(min-width:768px){:root{--w:960px}.list{grid-template-columns:1fr 1fr}.cgrid{grid-template-columns:repeat(4,1fr)}.hero{height:300px;padding:24px 32px 0}.hero h1{font-size:40px}.search{max-w[...]
 @media(max-width:340px){.hero h1{font-size:26px}.pic{flex-basis:100px}.perks{font-size:11px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -201,69 +201,69 @@ if (!window.ROOMLY_SUPABASE_URL || !window.ROOMLY_SUPABASE_KEY) {
 
 /* ---------- Image config: put your photos in assets/img/ (see README) ---------- */
 const IMG='assets/img/';
-const CITIES=[['Bengaluru','बेंगलुरु'],['Hyderabad','हैदराबाद'],['Pune','पुणे'],['Mumbai','मुंबई'],['Delhi','दिल्ली'],['Chennai','चेन्नई'],['Noida','नोएडा'],['Kolkata','कोलकाता'],['Gurgaon','गुड़गाँव'],['Ahmedabad','अहमदाबाद']];
+const CITIES=[['Bengaluru','बेंगलुरु'],['Hyderabad','हैदराबाद'],['Pune','पुणे'],['Mumbai','मुंबई'],['Delhi','दिल्ली'],['Chennai','च[...]
 const slug=n=>n.toLowerCase();
 /* PROTOTYPE DATA — sample listings, not live. Replaced by Supabase in Phase 2. */
 const ROOMS=[
-{id:1,t:['Modern PG with Food','फूड के साथ मॉडर्न पीजी'],a:'HSR Layout',c:'Bengaluru',p:12000,type:'PG',furn:'Furnished',food:'Included',g:'Any',am:['wifi','laundry','power'],r:4.7,n:124,d:'2026-09-16',img:'',ph:1,av:true,dep:0},
-{id:2,t:['Single Room','सिंगल रूम'],a:'Kondapur',c:'Hyderabad',p:16000,type:'Single',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','wifi','bath'],r:4.3,n:89,d:'2026-09-10',img:'',ph:2,av:true,dep:0},
-{id:3,t:['Shared Room near Metro','मेट्रो के पास शेयर्ड रूम'],a:'Koregaon Park',c:'Pune',p:7500,type:'Shared',furn:'Semi',food:'Available',g:'Male',am:['wifi','parking','power'],r:4.1,n:57,d:'2026-09-05',img:'',ph:3,av:true,dep:0},
-{id:4,t:['Studio Flat','स्टूडियो फ्लैट'],a:'Andheri East',c:'Mumbai',p:22000,type:'Flat',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','parking','power'],r:4.6,n:142,d:'2026-09-12',img:'',ph:4,av:true,dep:0},
-{id:5,t:['Girls PG','गर्ल्स पीजी'],a:'Whitefield',c:'Bengaluru',p:9500,type:'PG',furn:'Semi',food:'Included',g:'Female',am:['security','wifi','power'],r:4.4,n:98,d:'2026-09-05',img:'',ph:1,av:true,dep:0},
-{id:6,t:['Spacious Family Room','विशाल फैमिली रूम'],a:'Indiranagar',c:'Bengaluru',p:28000,type:'Family',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','parking','security'],r:4.8,n:41,d:'2026-09-02',img:'',ph:2,av:true,dep:0},
-{id:7,t:['Family 2BHK Room','फैमिली 2BHK रूम'],a:'Sector 62',c:'Noida',p:14000,type:'Family',furn:'Semi',food:'NotAvailable',g:'Any',am:['parking','power','security'],r:4.2,n:17,d:'2026-08-22',img:'',ph:3,av:true,dep:0},
-{id:8,t:['Budget Single Room','बजट सिंगल रूम'],a:'Salt Lake',c:'Kolkata',p:4500,type:'Single',furn:'Unfurnished',food:'Available',g:'Male',am:['bath'],r:3.9,n:30,d:'2026-08-15',img:'',ph:4,av:true,dep:0},
-{id:9,t:['Premium Flat','प्रीमियम फ्लैट'],a:'DLF Phase 3',c:'Gurgaon',p:55000,type:'Flat',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','wifi','parking','power','laundry'],r:4.9,n:75,d:'2026-09-18',img:'',ph:1,av:true,dep:0},
-{id:10,t:['Co-living PG','को-लिविंग पीजी'],a:'Vastrapur',c:'Ahmedabad',p:8000,type:'PG',furn:'Furnished',food:'Included',g:'Female',am:['wifi','ac','laundry'],r:4.3,n:52,d:'2026-09-09',img:'',ph:2,av:true,dep:0}];
+{id:1,t:['Modern PG with Food','फूड के साथ मॉडर्न पीजी'],a:'HSR Layout',c:'Bengaluru',p:12000,type:'PG',furn:'Furnished',food:'Included',g:'Any',am:['wifi','la[...]
+{id:2,t:['Single Room','सिंगल रूम'],a:'Kondapur',c:'Hyderabad',p:16000,type:'Single',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','wifi','bath'],r:4.3,n:89,d:'2026-09-10'[...]
+{id:3,t:['Shared Room near Metro','मेट्रो के पास शेयर्ड रूम'],a:'Koregaon Park',c:'Pune',p:7500,type:'Shared',furn:'Semi',food:'Available',g:'Male',am:['wi[...]
+{id:4,t:['Studio Flat','स्टूडियो फ्लैट'],a:'Andheri East',c:'Mumbai',p:22000,type:'Flat',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','parking','power'],r:4.6,n[...]
+{id:5,t:['Girls PG','गर्ल्स पीजी'],a:'Whitefield',c:'Bengaluru',p:9500,type:'PG',furn:'Semi',food:'Included',g:'Female',am:['security','wifi','power'],r:4.4,n:98,d:'2026-09-05[...]
+{id:6,t:['Spacious Family Room','विशाल फैमिली रूम'],a:'Indiranagar',c:'Bengaluru',p:28000,type:'Family',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','parking'[...]
+{id:7,t:['Family 2BHK Room','फैमिली 2BHK रूम'],a:'Sector 62',c:'Noida',p:14000,type:'Family',furn:'Semi',food:'NotAvailable',g:'Any',am:['parking','power','security'],r:4.2,n:17[...]
+{id:8,t:['Budget Single Room','बजट सिंगल रूम'],a:'Salt Lake',c:'Kolkata',p:4500,type:'Single',furn:'Unfurnished',food:'Available',g:'Male',am:['bath'],r:3.9,n:30,d:'2026-08-[...]
+{id:9,t:['Premium Flat','प्रीमियम फ्लैट'],a:'DLF Phase 3',c:'Gurgaon',p:55000,type:'Flat',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','wifi','parking','power',[...]
+{id:10,t:['Co-living PG','को-लिविंग पीजी'],a:'Vastrapur',c:'Ahmedabad',p:8000,type:'PG',furn:'Furnished',food:'Included',g:'Female',am:['wifi','ac','laundry'],r:4.3,n:52,d[...]
 const BUDGETS=[['0-4999','b1'],['5000-10000','b2'],['10001-15000','b3'],['15001-25000','b4'],['25001-50000','b5'],['50001-','b6']];
-const TYPES=['PG','Single','Double','Triple','Shared','Flat','Family'],FURN=['Furnished','Semi','Unfurnished'],FOOD=['Available','NotAvailable','Included'],GEN=['Male','Female','Any'],AMS=['wifi','ac','bath','parking','security','power','laundry'];
+const TYPES=['PG','Single','Double','Triple','Shared','Flat','Family'],FURN=['Furnished','Semi','Unfurnished'],FOOD=['Available','NotAvailable','Included'],GEN=['Male','Female','Any'],AMS=['wifi'[...]
 /* ---------- Translations [en, hi] ---------- */
-const T={home:['Home','होम'],search:['Search','खोजें'],saved:['Saved','सेव्ड'],bookings:['Bookings','बुकिंग'],profile:['Profile','प्रोफ़ाइल'],allRooms:['All Rooms','सभी रूम'],menu:['Menu','मेनू'],find:['Search','खोजें'],mapView:['Map View','मैप देखें'],popular:['Popular Cities','लोकप्रिय शहर'],featured:['Featured Rooms','फ़ीचर्ड रूम'],viewall:['View All →','सभी देखें →'],proto:['Sample listings for the prototype. Live listings arrive with the Phase 2 backend.','ये प्रोटोटाइप के नमूना लिस्टिंग हैं। लाइव लिस्टिंग फेज़ 2 बैकएंड के साथ आएंगी।'],found:['rooms found','रूम मिले'],none:['No rooms match these filters. Clear a filter or raise your budget.','इन फ़िल्टर से कोई रूम नहीं मिला। फ़िल्टर हटाएँ या बजट बढ़ाएँ।'],mo:['/month','/माह'],book:['Book','बुक करें'],bookDone:['Request saved on this device (prototype). Real bookings need Phase 2.','अनुरोध इस डिवाइस पर सेव हो गया है (प्रोटोटाइप)। असली बुकिंग के लिए फेज़ 2 चाहिए।'],saveOn:['Saved','सेव किया'],saveOff:['Removed from saved','सेव से हटाया'],emptySaved:['Tap the heart on a room to save it here.','किसी रूम पर दिल दबाएँ और इसे यहाँ सेव करें।'],savedRooms:['Saved rooms','सेव्ड रूम'],reqs:['Booking requests','बुकिंग अनुरोध'],curCity:['City','शहर'],notif:['Notifications','सूचनाएँ'],noNotif:['You have no notifications yet. Booking and message alerts will appear here once accounts are live (Phase 2).','अभी कोई सूचना नहीं। बुकिंग और मैसेज अलर्ट तब दिखेंगे जब अकाउंट लाइव होंगे (फेज़ 2)।'],searchRooms:['Search Rooms','रूम खोजें'],cities:['Popular Cities','लोकप्रिय शहर'],allC:['All cities','सभी शहर'],anyB:['Any budget','कोई भी बजट'],anyT:['Any room type','कोई भी रूम टाइप'],anyF:['Any furnishing','कोई भी'],anyFd:['Any food option','कोई भी'],anyG:['Any gender preference','कोई भी'],amen:['Amenities','सुविधाएँ'],gender:['Gender','लिंग'],h1a:['Find a place','एक ऐसी जगह खोजें'],h1b:['that feels like','जो लगे'],h1c:['Home','घर जैसी'],sub:['Verified rooms • Safe living • Across India','वेरिफाइड रूम • सुरक्षित रहना • पूरे भारत में'],loading:['Loading','लोड हो रहा है'],err:['Something went wrong while loading this page.','यह पेज लोड करते समय कुछ गलत हुआ।'],reload:['Reload','रीलोड'],close:['Close','बंद करें'],city:['City','शहर'],budget:['Budget','बजट'],type:['Room Type','रूम टाइप'],furn:['Furnishing','फर्निशिंग'],food:['Food Availability','खाना उपलब्धता'],wifi:['Wi-Fi','वाई-फ़ाई'],ac:['AC','एसी'],bath:['Attached Bathroom','अटैच्ड बाथरूम'],parking:['Parking','पार्किंग'],security:['Security','सुरक्षा'],power:['Power Backup','पावर बैकअप'],laundry:['Laundry','लॉन्ड्री'],PG:['PG','पीजी'],Single:['Single Room','सिंगल रूम'],Shared:['Shared Room','शेयर्ड रूम'],Flat:['Flat','फ्लैट'],Family:['Family Room','फैमिली रूम'],Furnished:['Furnished','फर्निश्ड'],Semi:['Semi-Furnished','सेमी-फर्निश्ड'],Unfurnished:['Unfurnished','अनफर्निश्ड'],Available:['Food Available','खाना उपलब्ध'],NotAvailable:['No Food','खाना नहीं'],Included:['Food Included','खाना शामिल'],Male:['Male','पुरुष'],Female:['Female','महिला'],Any:['Any','कोई भी'],go:['Search Rooms','रूम खोजें'],apply:['Apply Filters','फ़िल्टर लगाएँ'],clear:['Clear Filters','फ़िल्टर हटाएँ'],sort:['Sort','क्रम'],sNew:['Newest','नया सबसे पहले'],sLow:['Price: Low to high','कीमत: कम से ज़्यादा'],sHigh:['Price: High to low','कीमत: ज़्यादा से कम'],sRate:['Rating','रेटिंग'],b1:['Under ₹5,000','₹5,000 से कम'],b2:['₹5,000–₹10,000','₹5,000–₹10,000'],b3:['₹10,000–₹15,000','₹10,000–₹15,000'],b4:['₹15,000–₹25,000','₹15,000–₹25,000'],b5:['₹25,000–₹50,000','₹25,000–₹50,000'],b6:['₹50,000+','₹50,000+'],verified:['Verified','वेरिफाइड'],nobrok:['No Brokerage','नो ब्रोकरेज'],safe:['Safe & Secure','सुरक्षित'],easy:['Easy Booking','आसान बुकिंग'],soon:['This feature needs the Phase 2 backend (accounts and database), so it is not available yet. Nothing here is faked.','इस फ़ीचर के लिए फेज़ 2 बैकएंड (अकाउंट और डेटाबेस) चाहिए, इसलिए यह अभी उपलब्ध नहीं है। यहाँ कुछ भी नकली नहीं है।'],aboutT:['Alfrzo helps people find rooms, PGs, flats and family rooms across India.','अल्फ्रज़ो पूरे भारत में रूम, पीजी, फ्लैट और फैमिली रूम ढूँढने में मदद करता है।'],helpT:['Support channels will be added when the backend is live.','बैकएंड शुरू होने पर सहायता चैनल जोड़े जाएंगे।'],legalT:['The full legal text will be published before launch.','पूरा कानूनी पाठ लॉन्च से पहले प्रकाशित होगा।']};
+const T={home:['Home','होम'],search:['Search','खोजें'],saved:['Saved','सेव्ड'],bookings:['Bookings','बुकिंग'],profile:['Profile','प्रोफ़ाइल[...]
 const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const blank={city:'',budget:'',type:'',furn:'',food:'',gender:'',am:[]};
-const S={lang:store.get('al_lang','en'),saved:new Set(store.get('al_saved',[])),bookings:store.get('al_book',[]),notes:store.get('al_notes',[]),city:store.get('al_city','Bengaluru'),F:{...blank,...store.get('al_f',{}),am:[]},sort:'new',loading:false};
+const S={lang:store.get('al_lang','en'),saved:new Set(store.get('al_saved',[])),bookings:store.get('al_book',[]),notes:store.get('al_notes',[]),city:store.get('al_city','Bengaluru'),F:{...blank,.[...]
 if(S.lang!=='hi')S.lang='en';
 const L=()=>S.lang==='hi'?1:0, t=k=>(T[k]||[k,k])[L()];
 const $=s=>document.querySelector(s), view=$('#view');
 const inr=n=>'₹'+n.toLocaleString('en-IN');
 const cityName=n=>{const c=CITIES.find(x=>x[0]===n);return c?c[L()]:n};
-const ic={pin:'<path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',inr:'<path d="M7 5h10M7 9h10M7 5c6 0 6 8 0 8l7 6"/>',home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',heart:'<path d="M12 21s-8.5-5.2-10.5-9.4C.4 8.6 2 5.6 5.3 5.6c2.2 0 3.6 1.3 4.5 2.6.9-1.3 2.3-2.6 4.5-2.6 3.3 0 4.9 3 3.8 5.9C20.5 15.8 12 21 12 21z"/>',menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',book:'<path d="M6 4h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2V6a2 2 0 0 1 2-2z"/>',search:'<circle cx="11" cy="11" r="5"/><path d="M16 16l5 5"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M5 20c1.5-3 4-4.5 7-4.5S17.5 17 19 20"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7.5A4 4 0 0 1 12 3.5a4 4 0 0 1 4 4V11"/>',shield:'<path d="M12 3l7 3v6c0 4.3-2.8 7.4-7 9-4.2-1.6-7-4.7-7-9V6l7-3z"/>',chev:'<path d="M7 10l5 5 5-5"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',bolt:'<path d="M13 2L5 13h5l-1 9 8-11h-5l1-9z"/>'};
+const ic={pin:'<path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',inr:'<path d="M7 5h10M7 9h10M7 5c6 0 6 8 0 8l7 6"/>',home:'<path d="M3 11l9-8 9 8v9a1 1 0[...]
 const svg=(k,c='')=>`<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${ic[k]}</svg>`;
 function toast(m){const e=$('#toast');e.textContent=m;e.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>e.classList.remove('show'),2200)}
 function art(seed,w=200,h=200){let s=seed*9301+49297,r=()=>(s=(s*9301+49297)%233280)/233280,hue=(seed*47)%360,b='';
- for(let i=0,x=0;x<w;i++){const bw=18+r()*26,bh=40+r()*90;b+=`<rect x="${x}" y="${h-bh}" width="${bw-3}" height="${bh}" fill="hsl(${hue},35%,${22+r()*14}%)"/>`;for(let y=h-bh+8;y<h-6;y+=12)if(r()<.7)b+=`<rect x="${x+6}" y="${y}" width="${bw-12}" height="5" fill="rgba(255,255,255,.08)"/>`;x+=bw}
- return 'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMax slice"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="hsl(${hue},35%,28%)"/><stop offset="100%" stop-color="hsl(${hue+25},45%,18%)"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#g)"/>${b}</svg>`)}
+ for(let i=0,x=0;x<w;i++){const bw=18+r()*26,bh=40+r()*90;b+=`<rect x="${x}" y="${h-bh}" width="${bw-3}" height="${bh}" fill="hsl(${hue},35%,${22+r()*14}%)"/>`;for(let y=h-bh+8;y<h-6;y+=12)if(r()[...]
+ return 'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMax slice"><defs><linearGradient id="g" x1="0" y1="0" x[...]
 function img(file,seed,alt,extra=''){return `<img src="${IMG}${file}" alt="${alt}" ${extra} data-fb="${seed}" onerror="window.__fb(this)">`}
 window.__fb=function(el){if(el.dataset.done)return;el.dataset.done=1;el.src=art(+el.dataset.fb)};
-function matches(r,F){if(F.city&&r.c!==F.city)return false;if(F.budget){const [a,b]=F.budget.split('-');if(r.p<+a||(b&&r.p>+b))return false}if(F.type&&r.type!==F.type)return false;if(F.furn&&r.furn!==F.furn)return false;if(F.food&&r.food!==F.food)return false;if(F.gender&&F.gender!=='Any'&&r.g!=='Any'&&r.g!==F.gender)return false;return (!F.am||F.am.every(a=>r.am.includes(a)))}
+function matches(r,F){if(F.city&&r.c!==F.city)return false;if(F.budget){const [a,b]=F.budget.split('-');if(r.p<+a||(b&&r.p>+b))return false}if(F.type&&r.type!==F.type)return false;if(F.furn&&r.fu[...]
 function sorted(a){const x=[...a];const f={new:(p,q)=>q.d.localeCompare(p.d),low:(p,q)=>p.p-q.p,high:(p,q)=>q.p-p.p,rate:(p,q)=>q.r-p.r}[S.sort];return x.sort(f)}
-const persist=()=>{store.set('al_lang',S.lang);store.set('al_saved',[...S.saved]);store.set('al_book',S.bookings);store.set('al_notes',S.notes);store.set('al_city',S.city);store.set('al_f',{...S.F})};
+const persist=()=>{store.set('al_lang',S.lang);store.set('al_saved',[...S.saved]);store.set('al_book',S.bookings);store.set('al_notes',S.notes);store.set('al_city',S.city);store.set('al_f',{...S.[...]
 const opts=(arr,sel,first)=>(first?`<option value="">${first}</option>`:'')+arr.map(([v,l])=>`<option value="${v}" ${v===sel?'selected':''}>${l}</option>`).join('');
-const fld=(icon,id,inner)=>`<label class="field">${svg(icon)}<select id="${id}" aria-label="${t(id==='f-city'||id==='city'?'city':id.replace('f-',''))}">${inner}</select>${svg('chev','chev')}</label>`;
+const fld=(icon,id,inner)=>`<label class="field">${svg(icon)}<select id="${id}" aria-label="${t(id==='f-city'||id==='city'?'city':id.replace('f-',''))}">${inner}</select>${svg('chev','chev')}</la[...]
 const cityOpts=sel=>opts(CITIES.map(c=>[c[0],c[L()]]),sel,t('allC'));
 const budOpts=sel=>opts(BUDGETS.map(([v,k])=>[v,t(k)]),sel,t('anyB'));
 const typeOpts=sel=>opts(TYPES.map(k=>[k,t(k)]),sel,t('anyT'));
-function roomCard(r){const pic=['r1','r2','r3','r4'][r.id%4];return `<article class="room"><div class="pic">${r.img?`<img src="${r.img}" alt="" loading="lazy">`:img('room-'+(r.ph||(r.id%4+1))+'.jpg',r.id+30,t(r.type),'loading="lazy"')}<button class="heart ${S.saved.has(r.id)?'on':''}" data-save="${r.id}" aria-label="${t('saveOn')}">${svg('heart')}</button></div><div class="info"><div><h3>${esc(r.t[L()])}</h3><div class="loc">${esc(r.a)}, ${cityName(r.c)}</div></div><div class="price">${inr(r.p)}${t('mo')}</div><div class="tags"><span>${t(r.type)}</span><span>${t(r.food)}</span>${r.am.slice(0,1).map(a=>`<span>${t(a)}</span>`).join('')}</div><div class="row"><span class="${r.n?'rate':''}">${r.n?`${r.r} <s>(${r.n})</s>`:t('bookDone')}</span><button class="book" data-book="${r.id}">${t('book')}</button></div></div></article>`}
+function roomCard(r){const pic=['r1','r2','r3','r4'][r.id%4];return `<article class="room"><div class="pic">${r.img?`<img src="${r.img}" alt="" loading="lazy">`:img('room-'+(r.ph||(r.id%4+1))+'.j[...]
 const listHTML=(a,m)=>a.length?`<div class="list">${a.map(roomCard).join('')}</div>`:`<div class="empty">${m}</div>`;
-function cityBtn(c,i){return `<button class="city ${c[0]===S.city&&S.route==='home'?'on':''}" data-city="${c[0]}" aria-label="${c[L()]}">${img('city-'+slug(c[0])+'.jpg',i+1,c[0],'loading="lazy"')}<span>${c[L()]}</span></button>`}
-function homeSearch(){return `<section class="search">${fld('pin','city',cityOpts(S.city))}${fld('inr','budget',budOpts(S.F.budget))}${fld('home','type',typeOpts(S.F.type))}<button class="go" id="go">${svg('search')} ${t('go')}</button></section>`}
-function home(){const pf=[['shield','verified','#ece8ff','#5b3df5'],['inr','nobrok','#dff5ea','#17a05d'],['lock','safe','#ffe3f1','#e0247f'],['bolt','easy','#fff1d6','#f5a000']];const feat=ROOMS.slice(0,4);return `<header class="hero">${img('hero.jpg',7,'','class="hero-img" fetchpriority="high" decoding="async"').replace('data-done','')}<div class="bar"><button data-menu aria-label="${t('menu')}">${svg('menu')}</button><div class="logo"><i>${svg('home')}</i>Alfrzo</div></div><h1>${t('h1a')}<br>${t('h1b')} <em>${t('h1c')}</em></h1><p>${t('sub')}</p></header>${homeSearch()}<div class="perks">${pf.map(([i,l,bg,c])=>`<div><b style="background:${bg};color:${c}">${svg(i)}</b>${t(l)}</div>`).join('')}</div><div class="sec"><h2>${t('popular')}</h2><a data-go="cities" role="link" tabindex="0">${t('viewall')}</a></div><div class="cities">${CITIES.map(cityBtn).join('')}</div><div class="sec"><h2>${t('featured')}</h2><a data-go="rooms" role="link" tabindex="0">${t('viewall')}</a></div><p class="note">${t('proto')}</p>${listHTML(feat,t('none'))}`}
-function filterPanel(){const F=S.F;return `<div class="fp"><label class="field">${svg('pin')}<select id="f-city" aria-label="${t('city')}">${cityOpts(F.city)}</select>${svg('chev','chev')}</label><label class="field">${svg('inr')}<select id="f-budget" aria-label="${t('budget')}">${budOpts(F.budget)}</select>${svg('chev','chev')}</label><label class="field">${svg('home')}<select id="f-type" aria-label="${t('type')}">${typeOpts(F.type)}</select>${svg('chev','chev')}</label><label class="field">${svg('home')}<select id="f-furn" aria-label="${t('furn')}">${opts(FURN.map(k=>[k,t(k)]),F.furn,t('anyF'))}</select>${svg('chev','chev')}</label><label class="field">${svg('home')}<select id="f-food" aria-label="${t('food')}">${opts(FOOD.map(k=>[k,t(k)]),F.food,t('anyFd'))}</select>${svg('chev','chev')}</label><label class="field">${svg('user')}<select id="f-gender" aria-label="${t('gender')}">${opts(GEN.map(k=>[k,t(k)]),F.gender,t('anyG'))}</select>${svg('chev','chev')}</label><h4>${t('amen')}</h4><div class="chips" id="f-am">${AMS.map(a=>`<button type="button" class="chip ${F.am.includes(a)?'on':''}" data-am="${a}" aria-pressed="${F.am.includes(a)}">${t(a)}</button>`).join('')}</div><div class="btns"><button class="ghost" id="clr">${t('clear')}</button><button class="go" id="apply">${svg('search')} ${t('apply')}</button></div></div>`}
-function results(){if(S.loading)return `<div class="list" style="margin-top:16px" role="status" aria-label="${t('loading')}"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>`;const a=sorted(ROOMS.filter(r=>matches(r,S.F)));return `<div class="sortbar"><span>${a.length} ${t('found')}</span><label>${t('sort')} <select id="sort">${opts([['new',t('sNew')],['low',t('sLow')],['high',t('sHigh')],['rate',t('sRate')]],S.sort)}</select></label></div>${listHTML(a,t('none'))}`}
+function cityBtn(c,i){return `<button class="city ${c[0]===S.city&&S.route==='home'?'on':''}" data-city="${c[0]}" aria-label="${c[L()]}">${img('city-'+slug(c[0])+'.jpg',i+1,c[0],'loading="lazy"')[...]
+function homeSearch(){return `<section class="search">${fld('pin','city',cityOpts(S.city))}${fld('inr','budget',budOpts(S.F.budget))}${fld('home','type',typeOpts(S.F.type))}<button class="go" id=[...]
+function home(){const pf=[['shield','verified','#ece8ff','#5b3df5'],['inr','nobrok','#dff5ea','#17a05d'],['lock','safe','#ffe3f1','#e0247f'],['bolt','easy','#fff1d6','#f5a000']];const feat=ROOMS.[...]
+function filterPanel(){const F=S.F;return `<div class="fp"><label class="field">${svg('pin')}<select id="f-city" aria-label="${t('city')}">${cityOpts(F.city)}</select>${svg('chev','chev')}</label[...]
+function results(){if(S.loading)return `<div class="list" style="margin-top:16px" role="status" aria-label="${t('loading')}"><div class="skel"></div><div class="skel"></div><div class="skel"></di[...]
 function searchPage(){return `<div class="page"><h2>${t('searchRooms')}</h2></div>${filterPanel()}${results()}`}
-function rooms(){const a=sorted(ROOMS);return `<div class="page"><div class="row"><h2>${t('allRooms')}</h2><button class="book" data-go="home">${t('home')}</button></div><p>${t('proto')}</p></div>${listHTML(a,t('none'))}`}
+function rooms(){const a=sorted(ROOMS);return `<div class="page"><div class="row"><h2>${t('allRooms')}</h2><button class="book" data-go="home">${t('home')}</button></div><p>${t('proto')}</p></div[...]
 function cities(){return `<div class="page"><h2>${t('cities')}</h2></div><div class="cgrid">${CITIES.map(cityBtn).join('')}</div>`}
 function savedPage(){return `<div class="page"><h2>${t('savedRooms')}</h2></div>${listHTML(ROOMS.filter(r=>S.saved.has(r.id)),t('emptySaved'))}`}
 function bookingsPage(){return `<div class="page"><h2>${t('bookings')}</h2></div><div class="empty">${t('soon')}</div>`}
-function profilePage(){return `<div class="page"><h2>${t('profile')}</h2><div class="prof"><div>${t('savedRooms')}: ${S.saved.size}</div><div>${t('bookings')}: ${S.bookings.length}</div><div>${t('curCity')}: ${cityName(S.city)}</div></div></div>`}
+function profilePage(){return `<div class="page"><h2>${t('profile')}</h2><div class="prof"><div>${t('savedRooms')}: ${S.saved.size}</div><div>${t('bookings')}: ${S.bookings.length}</div><div>${t([...]
 const info=(k,b)=>()=>`<div class="page"><h2>${t(k)}</h2><p>${t(b)}</p></div>`;
-const PAGES={home,search:searchPage,rooms,cities,saved:savedPage,bookings:bookingsPage,profile:profilePage,help:info('help','helpT'),about:info('about','aboutT'),contact:info('contact','helpT'),privacy:info('privacy','legalT')};
+const PAGES={home,search:searchPage,rooms,cities,saved:savedPage,bookings:bookingsPage,profile:profilePage,help:info('help','helpT'),about:info('about','aboutT'),contact:info('contact','helpT'),p[...]
 const TABS=[['home','home'],['search','search'],['saved','heart'],['bookings','book'],['profile','user']];
 function renderTabs(){$('#tabs').innerHTML=TABS.map(([k,i])=>`<button data-tab="${k}" class="${S.route===k?'on':''}" ${S.route===k?'aria-current="page"':''}>${svg(i)}${t(k)}</button>`).join('')}
 const MENU=[['home','home'],['search','searchRooms'],['cities','cities'],['rooms','allRooms'],['saved','savedMenu'],['bookings','myBook'],['profile','myProf']];
-function renderDrawer(){$('#drawer').innerHTML=`<div class="dh"><div class="logo"><i>${svg('home')}</i>Alfrzo</div><button data-close aria-label="${t('close')}">${svg('x')}</button></div><div class="dn"><button data-go="home">${t('home')}</button><button data-go="search">${t('searchRooms')}</button><button data-go="cities">${t('cities')}</button><button data-go="rooms">${t('allRooms')}</button><button data-go="saved">${t('savedRooms')}</button><button data-go="bookings">${t('bookings')}</button><button data-go="profile">${t('profile')}</button><hr><button data-go="about">About</button><button data-go="help">Help</button><button data-go="privacy">Privacy</button></div>`}
-function renderSheet(){const items=[];$('#sheet').innerHTML=`<h3>${t('notif')}<button data-close aria-label="${t('close')}">${svg('x')}</button></h3>${items.length?items.map(x=>`<div class="nt">${esc(x)}</div>`).join(''):`<div class="nt">${t('noNotif')}</div>`}`}
-function route(){return (location.hash.replace(/^#\/?,'' )||'home').split('?')[0]} 
+function renderDrawer(){$('#drawer').innerHTML=`<div class="dh"><div class="logo"><i>${svg('home')}</i>Alfrzo</div><button data-close aria-label="${t('close')}">${svg('x')}</button></div><div cla[...]
+function renderSheet(){const items=[];$('#sheet').innerHTML=`<h3>${t('notif')}<button data-close aria-label="${t('close')}">${svg('x')}</button></h3>${items.length?items.map(x=>`<div class="nt">$[...]
+function route(){return (location.hash.replace(/^#\/?/,'')||'home').split('?')[0]}
 
 function render(){
   try{S.route=PAGES[route()]?route():'home';document.documentElement.lang=S.lang;view.innerHTML=PAGES[S.route]();renderTabs();renderDrawer();renderSheet();}
@@ -271,10 +271,10 @@ function render(){
 }
 function go(r){closeAll();if(location.hash==='#/'+r){render()}else location.hash='/'+r;window.scrollTo(0,0)}
 window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
-function open(el){closeAll();el.classList.add('show');el.setAttribute('aria-hidden','false');$('#ov').classList.add('show');document.body.classList.add('lock');const b=el.querySelector('button');if(b)b.focus()}
-function closeAll(){['#drawer','#sheet'].forEach(s=>{const e=$(s);e.classList.remove('show');e.setAttribute('aria-hidden','true')});$('#ov').classList.remove('show');document.body.classList.remove('lock')}
+function open(el){closeAll();el.classList.add('show');el.setAttribute('aria-hidden','false');$('#ov').classList.add('show');document.body.classList.add('lock');const b=el.querySelector('button');[...]
+function closeAll(){['#drawer','#sheet'].forEach(s=>{const e=$(s);e.classList.remove('show');e.setAttribute('aria-hidden','true')});$('#ov').classList.remove('show');document.body.classList.remov[...]
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-go][role=link]')){e.preventDefault();go(e.target.dataset.go)}});
-function readFilters(){const v=i=>{const e=$('#'+i);return e?e.value:''};S.F={city:v('f-city'),budget:v('f-budget'),type:v('f-type'),furn:v('f-furn'),food:v('f-food'),gender:v('f-gender'),am:[...document.querySelectorAll('#f-am .chip.on')].map(c=>c.dataset.am)};persist()}
+function readFilters(){const v=i=>{const e=$('#'+i);return e?e.value:''};S.F={city:v('f-city'),budget:v('f-budget'),type:v('f-type'),furn:v('f-furn'),food:v('f-food'),gender:v('f-gender'),am:[...[...]
 function applySearch(){S.loading=true;render();setTimeout(()=>{S.loading=false;persist();if(route()==='search')render()},350)}
 document.addEventListener('click',e=>{
   const q=s=>e.target.closest(s);let el;
@@ -287,7 +287,7 @@ document.addEventListener('click',e=>{
   if(el=q('[data-save]')){const id=+el.dataset.save;S.saved.has(id)?S.saved.delete(id):S.saved.add(id);persist();toast(S.saved.has(id)?t('saveOn'):t('saveOff'));return render()}
   if(el=q('[data-book]')){return toast(t('bookDone'))}
   if(el=q('[data-am]')){el.classList.toggle('on');el.setAttribute('aria-pressed',el.classList.contains('on'));return}
-  if(q('#go')){S.F={...S.F,city:$('#city').value,budget:$('#budget').value,type:$('#type').value};if(S.F.city)S.city=S.F.city;persist();if(location.hash==='#/search')render();else location.hash='/search';return}
+  if(q('#go')){S.F={...S.F,city:$('#city').value,budget:$('#budget').value,type:$('#type').value};if(S.F.city)S.city=S.F.city;persist();if(location.hash==='#/search')render();else location.hash='[...]
   if(q('#apply')){readFilters();return applySearch()}
   if(q('#clr')){S.F={...blank};persist();return applySearch()}
 });
