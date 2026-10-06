@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="config.js"></script>
 <style>
 :root{--ink:#14183a;--muted:#6b7090;--purple:#5b3df5;--pink:#e830e8;--blue:#2f45ff;--bg:#f6f5fc;--card:#fff;--line:#e9e8f3;--w:430px}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -24,7 +25,7 @@ button{border:0;background:none;cursor:pointer}
 svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .hero{height:250px;padding:18px 18px 0;color:#fff;position:relative;overflow:hidden;background:linear-gradient(120deg,#2a1d6e,#5b3d9e 55%,#c0527a)}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(30,16,80,.35),rgba(24,12,70,.88)),radial-gradient(circle at 82% 28%,rgba(255,110,200,.38),transparent 42%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(30,16,80,.35),rgba(24,12,70,.88)),radial-gradient(circle at 82% 28%,rgba(255,110,200,.38),transparent 28%)}
 .hero>*:not(img){position:relative;z-index:2}
 .bar{display:flex;align-items:center;gap:14px}
 .bar button{position:relative;color:#fff;display:grid;place-items:center;width:34px;height:34px}
@@ -39,7 +40,7 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .field{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;height:48px;margin-bottom:10px;background:#fff}
 .field select{flex:1;min-width:0;border:0;background:none;outline:0;font-size:15px;font-weight:500;appearance:none;-webkit-appearance:none;height:100%}
 .field .chev{width:16px;height:16px;opacity:.6}
-.go{width:100%;height:50px;border-radius:14px;color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(90deg,#2f45ff,#e830e8);box-shadow:0 8px 20px rgba(120,50,255,.35)}
+.go{width:100%;height:50px;border-radius:14px;color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(90deg,#2f45ff,#e84ef3)}
 .perks{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:18px 14px 6px;text-align:center;font-size:12px;font-weight:600}
 .perks div{display:flex;flex-direction:column;align-items:center;gap:7px}
 .perks b{width:50px;height:50px;border-radius:14px;display:grid;place-items:center}
@@ -48,7 +49,7 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .sec a{color:var(--purple);font-weight:600;font-size:14px;cursor:pointer}
 .cities{display:flex;gap:10px;overflow-x:auto;padding:0 16px 4px;scrollbar-width:none}
 .cities::-webkit-scrollbar{display:none}
-.city{flex:0 0 96px;height:96px;border-radius:14px;color:#fff;font-size:12px;font-weight:700;position:relative;overflow:hidden;border:2px solid transparent;padding:0;background:#2a1d6e;transition:transform .15s}
+.city{flex:0 0 96px;height:96px;border-radius:14px;color:#fff;font-size:12px;font-weight:700;position:relative;overflow:hidden;border:2px solid transparent;padding:0;background:#2a1d6e;transition:transform .16s ease}
 .city:active{transform:scale(.96)}
 .city img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .city::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,60,0) 35%,rgba(20,10,60,.85))}
@@ -76,7 +77,7 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .rate s{text-decoration:none;color:var(--muted);font-weight:500}
 .rate::before{content:"★ ";color:#f5a623}
 .book{background:var(--purple);color:#fff;border-radius:10px;padding:6px 12px;font-size:12px;font-weight:700}
-.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:var(--w);display:flex;justify-content:space-around;background:#fff;border-radius:22px 22px 0 0;padding:10px 4px calc(10px + env(safe-area-inset-bottom,0px));box-shadow:0 -6px 24px rgba(40,30,120,.1);z-index:5}
+.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:var(--w);display:flex;justify-content:space-around;background:#fff;border-radius:22px 22px 0 0;padding:10px 4px 12px;box-shadow:0 -8px 28px rgba(30,20,80,.08)}
 .tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:500;color:#2a2d4a;flex:1}
 .tabs button.on{color:var(--purple);font-weight:700}
 .tabs button.on svg{fill:rgba(91,61,245,.15)}
@@ -84,13 +85,11 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .page h2{margin:0 0 14px;font-size:22px;font-weight:800}
 .page p{color:var(--muted);font-size:14px;line-height:1.55;margin:0 0 10px}
 .empty{text-align:center;color:var(--muted);padding:50px 20px;font-size:14px}
-.toast{position:fixed;bottom:96px;left:50%;transform:translate(-50%,20px);background:#14183a;color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:30;max-width:90vw;text-align:center}
+.toast{position:fixed;bottom:96px;left:50%;transform:translate(-50%,20px);background:#14183a;color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:all .2s ease}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .prof{display:grid;gap:10px}
 .prof div{background:#fff;border-radius:14px;padding:14px;font-weight:600}
-/* interactive map */
-.map-wrap{padding:0 14px 18px}.map-toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;margin:0 0 10px}.map-toolbar select{min-width:0;flex:1;border:1.5px solid var(--line);border-radius:10px;padding:10px;background:#fff}.map-canvas{height:390px;border-radius:18px;overflow:hidden;background:#e9e7f5;z-index:1}.map-note{font-size:12px;color:var(--muted);padding:8px 2px}.map-link{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:9px;padding:6px 9px;font-size:11px;font-weight:700;color:var(--purple);text-decoration:none;background:#fff}.coord-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.map-actions{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
-/* filters */
+.map-wrap{padding:0 14px 18px}.map-toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;margin:0 0 10px}.map-toolbar select{min-width:0;flex:1;border:1.5px solid var(--line);border-radius:10px;padding:7px 8px;background:#fff}
 .fp{margin:0 14px;background:#fff;border-radius:22px;padding:14px;box-shadow:0 14px 40px rgba(40,30,120,.12)}
 .fp h4{margin:6px 0 8px;font-size:13px;color:var(--muted);font-weight:600}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
@@ -105,10 +104,9 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 @keyframes sp{to{transform:rotate(360deg)}}
 .skel{height:112px;border-radius:16px;background:linear-gradient(90deg,#ece9fa,#f7f5ff,#ece9fa);background-size:200% 100%;animation:sh 1.2s infinite}
 @keyframes sh{to{background-position:-200% 0}}
-/* drawer + sheet */
 .ov{position:fixed;inset:0;background:rgba(20,14,60,.55);opacity:0;pointer-events:none;transition:.25s;z-index:20}
 .ov.show{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;bottom:0;left:max(0px,calc(50% - var(--w)/2));width:min(310px,86vw);background:#fff;z-index:21;transform:translateX(-105%);transition:transform .25s;display:flex;flex-direction:column;visibility:hidden}
+.drawer{position:fixed;top:0;bottom:0;left:max(0px,calc(50% - var(--w)/2));width:min(310px,86vw);background:#fff;z-index:21;transform:translateX(-105%);transition:transform .25s;display:flex;flex-direction:column}
 .drawer.show{transform:none;visibility:visible}
 .dh{display:flex;align-items:center;justify-content:space-between;padding:18px 16px;background:linear-gradient(120deg,#2a1d6e,#7a3fc0);color:#fff}
 .dh .logo{display:flex;align-items:center;gap:8px;font-size:22px;font-weight:800}
@@ -120,14 +118,14 @@ svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-l
 .dn .lg{display:flex;gap:8px;padding:10px 14px}
 .dn .lg button{width:auto;padding:8px 16px;border:1.5px solid var(--line);border-radius:20px;font-size:14px}
 .dn .lg button.on{background:var(--purple);color:#fff;border-color:var(--purple)}
-.sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,105%);width:100%;max-width:var(--w);background:#fff;border-radius:22px 22px 0 0;z-index:22;padding:18px 16px calc(24px + env(safe-area-inset-bottom,0px));transition:transform .25s;visibility:hidden;max-height:70vh;overflow-y:auto}
+.sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,105%);width:100%;max-width:var(--w);background:#fff;border-radius:22px 22px 0 0;z-index:22;padding:18px 16px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -8px 28px rgba(30,20,80,.12)}
 .sheet.show{transform:translate(-50%,0);visibility:visible}
 .sheet h3{margin:0 0 10px;font-size:18px;display:flex;justify-content:space-between;align-items:center}
 .nt{padding:12px;border-radius:12px;background:#f6f5fc;margin-bottom:8px;font-size:14px}
 .nt.u{border-left:4px solid var(--purple)}
 body.lock{overflow:hidden}
 .demo{background:#fff6dd;border:1px solid #f1d98a;color:#6b5200;border-radius:12px;padding:10px 12px;font-size:12.5px;margin:0 0 12px;line-height:1.45}
-.odh{display:flex;align-items:center;gap:10px;padding:14px 14px 0;font-weight:800;font-size:17px}.odh button{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:#fff}
+.odh{display:flex;align-items:center;gap:10px;padding:14px 14px 0;font-weight:800;font-size:17px}.odh button{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:#f0ecff;color:var(--ink)}
 .od{padding:14px 14px 8px}.onav{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none}.onav::-webkit-scrollbar{display:none}
 .onav button{flex:0 0 auto;padding:8px 14px;border-radius:20px;border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:13px}
 .onav button.on{background:var(--purple);border-color:var(--purple);color:#fff}.onav .lo{color:#c0224f;border-color:#f3c3d0}
@@ -136,7 +134,7 @@ body.lock{overflow:hidden}
 .ostats b{display:block;font-size:24px}.ostats span{font-size:12px;color:var(--muted);font-weight:600}
 .pill{display:inline-block;border-radius:10px;padding:3px 9px;font-size:11px;font-weight:700;background:#eee;white-space:nowrap}
 .pill.pending{background:#fff1d6;color:#8a5a00}.pill.accepted{background:#dff5ea;color:#0f7a45}.pill.rejected{background:#ffe3e8;color:#b0214a}.pill.cancelled{background:#ececf3;color:#555}
-.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}.acts button,.acts select{border:1.5px solid var(--line);border-radius:10px;padding:6px 10px;font-size:12px;font-weight:700;background:#fff}.acts .dng,.dng{color:#c0224f;border-color:#f3c3d0}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}.acts button,.acts select{border:1.5px solid var(--line);border-radius:10px;padding:6px 10px;font-size:12px;font-weight:700;background:#fff}
 .bk .info{gap:6px}.bk .loc{overflow-wrap:anywhere}.room h3{overflow-wrap:anywhere}
 .card{background:#fff;border-radius:14px;padding:12px;margin-bottom:8px;box-shadow:0 4px 16px rgba(40,30,120,.06)}
 .fg{margin-bottom:10px}.fg label,.chk{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:4px}.chk{margin:8px 0;color:var(--ink);font-size:14px}
@@ -145,8 +143,8 @@ body.lock{overflow:hidden}
 .phs{display:flex;gap:8px;flex-wrap:wrap}.phs label{position:relative;cursor:pointer;border:2px solid transparent;border-radius:10px;overflow:hidden;width:72px;height:58px;margin:0}
 .phs label:has(input:checked){border-color:var(--purple)}.phs input{position:absolute;opacity:0}.phs img{width:100%;height:100%;object-fit:cover}
 .av{width:72px;height:72px;border-radius:50%;object-fit:cover;background:#e1ddf8;margin-bottom:8px}
-@media(min-width:768px){.od{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start}.onav{flex-direction:column;overflow:visible}.onav button{text-align:left;border-radius:12px}.ostats{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:768px){:root{--w:960px}.list{grid-template-columns:1fr 1fr}.cgrid{grid-template-columns:repeat(4,1fr)}.hero{height:300px;padding:24px 32px 0}.hero h1{font-size:40px}.search{max-width:520px;margin-left:auto;margin-right:auto}.city{flex-basis:130px;height:110px}}
+@media(min-width:768px){.od{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start}.onav{flex-direction:column;overflow:visible}.onav button{text-align:left;border-radius:12px}.oc .list{grid-template-columns:1fr 1fr}}
+@media(min-width:768px){:root{--w:960px}.list{grid-template-columns:1fr 1fr}.cgrid{grid-template-columns:repeat(4,1fr)}.hero{height:300px;padding:24px 32px 0}.hero h1{font-size:40px}.search{max-width:900px;margin:-52px auto 0}.fp{max-width:900px;margin:0 auto}} 
 @media(max-width:340px){.hero h1{font-size:26px}.pic{flex-basis:100px}.perks{font-size:11px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -163,281 +161,138 @@ body.lock{overflow:hidden}
 <script>
 (function(){
 'use strict';
+
+if (!window.ROOMLY_SUPABASE_URL || !window.ROOMLY_SUPABASE_KEY) {
+  console.warn('[Alfrzo] Existing Supabase config missing. Continuing with current demo data.');
+} else {
+  const supabaseScript = document.createElement('script');
+  supabaseScript.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
+  supabaseScript.async = true;
+  supabaseScript.onload = async () => {
+    if (!window.supabase || typeof window.supabase.createClient !== 'function') {
+      console.error('[Alfrzo] Supabase browser client failed to load.');
+      return;
+    }
+
+    window.supabaseClient = window.supabase.createClient(
+      window.ROOMLY_SUPABASE_URL,
+      window.ROOMLY_SUPABASE_KEY
+    );
+
+    try {
+      const { count, error } = await window.supabaseClient
+        .from('rooms')
+        .select('id', { count: 'exact', head: true });
+
+      if (error) {
+        console.error('[Alfrzo] Supabase read-only rooms check failed:', error);
+      } else {
+        console.log('[Alfrzo] Supabase read-only rooms check passed. Room count:', count);
+      }
+    } catch (e) {
+      console.error('[Alfrzo] Supabase read-only rooms check threw:', e && e.message ? e.message : e);
+    }
+  };
+  supabaseScript.onerror = () => {
+    console.error('[Alfrzo] Failed to load Supabase browser client from CDN.');
+  };
+  document.head.appendChild(supabaseScript);
+}
+
 /* ---------- Image config: put your photos in assets/img/ (see README) ---------- */
 const IMG='assets/img/';
-const CITIES=[['Bengaluru','बेंगलुरु'],['Hyderabad','हैदराबाद'],['Pune','पुणे'],['Mumbai','मुंबई'],['Delhi','दिल्ली'],['Chennai','चेन्नई'],['Noida','नोएडा'],['Gurgaon','गुरुग्राम'],['Kolkata','कोलकाता'],['Ahmedabad','अहमदाबाद'],['Jaipur','जयपुर'],['Kochi','कोच्चि']];
+const CITIES=[['Bengaluru','बेंगलुरु'],['Hyderabad','हैदराबाद'],['Pune','पुणे'],['Mumbai','मुंबई'],['Delhi','दिल्ली'],['Chennai','चेन्नई'],['Noida','नोएडा'],['Kolkata','कोलकाता'],['Gurgaon','गुड़गाँव'],['Ahmedabad','अहमदाबाद']];
 const slug=n=>n.toLowerCase();
 /* PROTOTYPE DATA — sample listings, not live. Replaced by Supabase in Phase 2. */
 const ROOMS=[
-{id:1,t:['Modern PG with Food','फूड के साथ मॉडर्न पीजी'],a:'HSR Layout',c:'Bengaluru',p:12000,type:'PG',furn:'Furnished',food:'Included',g:'Any',am:['wifi','laundry'],r:4.5,n:120,d:'2026-09-20'},
-{id:2,t:['Single Room','सिंगल रूम'],a:'Kondapur',c:'Hyderabad',p:16000,type:'Single',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','wifi','bath'],r:4.3,n:89,d:'2026-09-10'},
-{id:3,t:['Shared Room near Metro','मेट्रो के पास शेयर्ड रूम'],a:'Koregaon Park',c:'Pune',p:7500,type:'Shared',furn:'Semi',food:'Available',g:'Male',am:['wifi'],r:4.1,n:64,d:'2026-08-30'},
-{id:4,t:['Studio Flat','स्टूडियो फ्लैट'],a:'Andheri East',c:'Mumbai',p:22000,type:'Flat',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','parking','power'],r:4.6,n:41,d:'2026-09-28'},
-{id:5,t:['Girls PG','गर्ल्स पीजी'],a:'Whitefield',c:'Bengaluru',p:9500,type:'PG',furn:'Semi',food:'Included',g:'Female',am:['security','wifi','power'],r:4.4,n:98,d:'2026-09-05'},
-{id:6,t:['Spacious Family Room','विशाल फैमिली रूम'],a:'Indiranagar',c:'Bengaluru',p:28000,type:'Family',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','parking','bath','security'],r:4.7,n:23,d:'2026-09-30'},
-{id:7,t:['Family 2BHK Room','फैमिली 2BHK रूम'],a:'Sector 62',c:'Noida',p:14000,type:'Family',furn:'Semi',food:'NotAvailable',g:'Any',am:['parking','power','security'],r:4.2,n:17,d:'2026-09-15'},
-{id:8,t:['Budget Single Room','बजट सिंगल रूम'],a:'Salt Lake',c:'Kolkata',p:4500,type:'Single',furn:'Unfurnished',food:'Available',g:'Male',am:['bath'],r:3.9,n:30,d:'2026-08-22'},
-{id:9,t:['Premium Flat','प्रीमियम फ्लैट'],a:'DLF Phase 3',c:'Gurgaon',p:55000,type:'Flat',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','wifi','parking','power','laundry','security'],r:4.8,n:12,d:'2026-10-01'},
-{id:10,t:['Co-living PG','को-लिविंग पीजी'],a:'Vastrapur',c:'Ahmedabad',p:8000,type:'PG',furn:'Furnished',food:'Included',g:'Female',am:['wifi','ac','laundry'],r:4.3,n:52,d:'2026-09-12'}];
+{id:1,t:['Modern PG with Food','फूड के साथ मॉडर्न पीजी'],a:'HSR Layout',c:'Bengaluru',p:12000,type:'PG',furn:'Furnished',food:'Included',g:'Any',am:['wifi','laundry','power'],r:4.7,n:124,d:'2026-09-16',img:'',ph:1,av:true,dep:0},
+{id:2,t:['Single Room','सिंगल रूम'],a:'Kondapur',c:'Hyderabad',p:16000,type:'Single',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','wifi','bath'],r:4.3,n:89,d:'2026-09-10',img:'',ph:2,av:true,dep:0},
+{id:3,t:['Shared Room near Metro','मेट्रो के पास शेयर्ड रूम'],a:'Koregaon Park',c:'Pune',p:7500,type:'Shared',furn:'Semi',food:'Available',g:'Male',am:['wifi','parking','power'],r:4.1,n:57,d:'2026-09-05',img:'',ph:3,av:true,dep:0},
+{id:4,t:['Studio Flat','स्टूडियो फ्लैट'],a:'Andheri East',c:'Mumbai',p:22000,type:'Flat',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','parking','power'],r:4.6,n:142,d:'2026-09-12',img:'',ph:4,av:true,dep:0},
+{id:5,t:['Girls PG','गर्ल्स पीजी'],a:'Whitefield',c:'Bengaluru',p:9500,type:'PG',furn:'Semi',food:'Included',g:'Female',am:['security','wifi','power'],r:4.4,n:98,d:'2026-09-05',img:'',ph:1,av:true,dep:0},
+{id:6,t:['Spacious Family Room','विशाल फैमिली रूम'],a:'Indiranagar',c:'Bengaluru',p:28000,type:'Family',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','parking','security'],r:4.8,n:41,d:'2026-09-02',img:'',ph:2,av:true,dep:0},
+{id:7,t:['Family 2BHK Room','फैमिली 2BHK रूम'],a:'Sector 62',c:'Noida',p:14000,type:'Family',furn:'Semi',food:'NotAvailable',g:'Any',am:['parking','power','security'],r:4.2,n:17,d:'2026-08-22',img:'',ph:3,av:true,dep:0},
+{id:8,t:['Budget Single Room','बजट सिंगल रूम'],a:'Salt Lake',c:'Kolkata',p:4500,type:'Single',furn:'Unfurnished',food:'Available',g:'Male',am:['bath'],r:3.9,n:30,d:'2026-08-15',img:'',ph:4,av:true,dep:0},
+{id:9,t:['Premium Flat','प्रीमियम फ्लैट'],a:'DLF Phase 3',c:'Gurgaon',p:55000,type:'Flat',furn:'Furnished',food:'NotAvailable',g:'Any',am:['ac','wifi','parking','power','laundry'],r:4.9,n:75,d:'2026-09-18',img:'',ph:1,av:true,dep:0},
+{id:10,t:['Co-living PG','को-लिविंग पीजी'],a:'Vastrapur',c:'Ahmedabad',p:8000,type:'PG',furn:'Furnished',food:'Included',g:'Female',am:['wifi','ac','laundry'],r:4.3,n:52,d:'2026-09-09',img:'',ph:2,av:true,dep:0}];
 const BUDGETS=[['0-4999','b1'],['5000-10000','b2'],['10001-15000','b3'],['15001-25000','b4'],['25001-50000','b5'],['50001-','b6']];
 const TYPES=['PG','Single','Double','Triple','Shared','Flat','Family'],FURN=['Furnished','Semi','Unfurnished'],FOOD=['Available','NotAvailable','Included'],GEN=['Male','Female','Any'],AMS=['wifi','ac','bath','parking','security','power','laundry'];
 /* ---------- Translations [en, hi] ---------- */
-const T={home:['Home','होम'],search:['Search','खोजें'],saved:['Saved','सेव्ड'],bookings:['Bookings','बुकिंग'],profile:['Profile','प्रोफ़ाइल'],
-h1a:['Find a place','एक ऐसी जगह खोजें'],h1b:['that feels like','जो लगे'],h1c:['Home','घर जैसी'],sub:['Verified rooms • Safe living • Across India','वेरिफाइड रूम • सुरक्षित रहना • पूरे भारत में'],
-city:['City','शहर'],budget:['Budget','बजट'],type:['Room Type','रूम टाइप'],furn:['Furnishing','फर्निशिंग'],food:['Food Availability','खाना उपलब्धता'],gender:['Gender Preference','जेंडर प्राथमिकता'],amen:['Amenities','सुविधाएँ'],
-anyB:['Any budget','कोई भी बजट'],anyT:['Any room type','कोई भी रूम टाइप'],anyF:['Any furnishing','कोई भी'],anyFd:['Any food option','कोई भी'],anyG:['Any','कोई भी'],allC:['All cities','सभी शहर'],
-b1:['Under ₹5,000','₹5,000 से कम'],b2:['₹5,000–₹10,000','₹5,000–₹10,000'],b3:['₹10,000–₹15,000','₹10,000–₹15,000'],b4:['₹15,000–₹25,000','₹15,000–₹25,000'],b5:['₹25,000–₹50,000','₹25,000–₹50,000'],b6:['Above ₹50,000','₹50,000 से ऊपर'],
-PG:['PG','पीजी'],Single:['Single Room','सिंगल रूम'],Shared:['Shared Room','शेयर्ड रूम'],Flat:['Flat','फ्लैट'],Family:['Family Room','फैमिली रूम'],
-Furnished:['Furnished','फर्निश्ड'],Semi:['Semi-Furnished','सेमी-फर्निश्ड'],Unfurnished:['Unfurnished','अनफर्निश्ड'],
-Available:['Food Available','खाना उपलब्ध'],NotAvailable:['No Food','खाना नहीं'],Included:['Food Included','खाना शामिल'],
-Male:['Male','पुरुष'],Female:['Female','महिला'],Any:['Any','कोई भी'],
-wifi:['Wi-Fi','वाई-फ़ाई'],ac:['AC','एसी'],bath:['Attached Bathroom','अटैच्ड बाथरूम'],parking:['Parking','पार्किंग'],security:['Security','सिक्योरिटी'],power:['Power Backup','पावर बैकअप'],laundry:['Laundry','लॉन्ड्री'],
-go:['Search Rooms','रूम खोजें'],apply:['Apply Filters','फ़िल्टर लगाएँ'],clear:['Clear Filters','फ़िल्टर हटाएँ'],sort:['Sort','क्रमबद्ध'],sNew:['Newest','सबसे नए'],sLow:['Price: Low to High','कीमत: कम से ज़्यादा'],sHigh:['Price: High to Low','कीमत: ज़्यादा से कम'],sRate:['Top rated','टॉप रेटेड'],
-verified:['Verified','वेरिफाइड'],nobrok:['No Brokerage','नो ब्रोकरेज'],safe:['Safe & Secure','सुरक्षित'],easy:['Easy Booking','आसान बुकिंग'],
-popular:['Popular Cities','लोकप्रिय शहर'],viewall:['View All →','सभी देखें →'],featured:['Featured Rooms','फ़ीचर्ड रूम'],
-proto:['Sample listings for the prototype. Live listings arrive with the Phase 2 backend.','ये प्रोटोटाइप के नमूना लिस्टिंग हैं। लाइव लिस्टिंग फेज़ 2 बैकएंड के साथ आएंगी।'],
-found:['rooms found','रूम मिले'],none:['No rooms match these filters. Clear a filter or raise your budget.','इन फ़िल्टर से कोई रूम नहीं मिला। फ़िल्टर हटाएँ या बजट बढ़ाएँ।'],
-mo:['/month','/माह'],book:['Book','बुक करें'],bookDone:['Request saved on this device (prototype). Real bookings need Phase 2.','अनुरोध इस डिवाइस पर सेव हुआ (प्रोटोटाइप)। असली बुकिंग फेज़ 2 में।'],bookDup:['Already requested','पहले ही अनुरोध किया'],
-saveOn:['Saved','सेव किया'],saveOff:['Removed from saved','सेव से हटाया'],emptySaved:['Tap the heart on a room to save it here.','किसी रूम पर दिल दबाएँ, वह यहाँ सेव होगा।'],emptyBook:['No booking requests yet. Pick a room and tap Book.','अभी कोई बुकिंग अनुरोध नहीं। रूम चुनें और बुक करें दबाएँ।'],
-savedRooms:['Saved rooms','सेव्ड रूम'],reqs:['Booking requests','बुकिंग अनुरोध'],curCity:['City','शहर'],
-notif:['Notifications','सूचनाएँ'],noNotif:['You have no notifications yet. Booking and message alerts will appear here once accounts are live (Phase 2).','अभी कोई सूचना नहीं। अकाउंट शुरू होने पर (फेज़ 2) बुकिंग और संदेश अलर्ट यहाँ दिखेंगे।'],markRead:['Mark all as read','सभी पढ़ा हुआ करें'],close:['Close','बंद करें'],
-searchRooms:['Search Rooms','रूम खोजें'],cities:['Popular Cities','लोकप्रिय शहर'],allRooms:['All Rooms','सभी रूम'],savedMenu:['Saved Rooms','सेव्ड रूम'],myBook:['My Bookings','मेरी बुकिंग'],myProf:['My Profile','मेरी प्रोफ़ाइल'],list:['List Your Property','अपनी प्रॉपर्टी लिस्ट करें'],owner:['Owner Dashboard','ओनर डैशबोर्ड'],cust:['Customer Login','कस्टमर लॉगिन'],help:['Help & Support','सहायता'],about:['About Alfrzo','अल्फ्रज़ो के बारे में'],contact:['Contact Us','संपर्क करें'],privacy:['Privacy Policy','प्राइवेसी पॉलिसी'],terms:['Terms & Conditions','नियम और शर्तें'],lang:['Language','भाषा'],
-soon:['This feature needs the Phase 2 backend (accounts and database), so it is not available yet. Nothing here is faked.','इस फ़ीचर के लिए फेज़ 2 बैकएंड (अकाउंट और डेटाबेस) चाहिए, इसलिए यह अभी उपलब्ध नहीं है। यहाँ कुछ भी नकली नहीं है।'],
-aboutT:['Alfrzo helps people find rooms, PGs, flats and family rooms across India.','अल्फ्रज़ो पूरे भारत में रूम, पीजी, फ्लैट और फैमिली रूम खोजने में मदद करता है।'],
-helpT:['Support channels will be added when the backend is live.','बैकएंड शुरू होने पर सहायता चैनल जोड़े जाएंगे।'],
-legalT:['The full legal text will be published before launch.','पूरा कानूनी पाठ लॉन्च से पहले प्रकाशित होगा।'],
-err:['Something went wrong while loading this page.','यह पेज लोड करते समय कुछ गलत हुआ।'],reload:['Reload','रीलोड'],loading:['Loading','लोड हो रहा है'],menu:['Menu','मेनू'],save:['Save room','रूम सेव करें'],lowest:['rooms','रूम']};
-/* ---------- State + safe storage ---------- */
+const T={home:['Home','होम'],search:['Search','खोजें'],saved:['Saved','सेव्ड'],bookings:['Bookings','बुकिंग'],profile:['Profile','प्रोफ़ाइल'],allRooms:['All Rooms','सभी रूम'],menu:['Menu','मेनू'],find:['Search','खोजें'],mapView:['Map View','मैप देखें'],popular:['Popular Cities','लोकप्रिय शहर'],featured:['Featured Rooms','फ़ीचर्ड रूम'],viewall:['View All →','सभी देखें →'],proto:['Sample listings for the prototype. Live listings arrive with the Phase 2 backend.','ये प्रोटोटाइप के नमूना लिस्टिंग हैं। लाइव लिस्टिंग फेज़ 2 बैकएंड के साथ आएंगी।'],found:['rooms found','रूम मिले'],none:['No rooms match these filters. Clear a filter or raise your budget.','इन फ़िल्टर से कोई रूम नहीं मिला। फ़िल्टर हटाएँ या बजट बढ़ाएँ।'],mo:['/month','/माह'],book:['Book','बुक करें'],bookDone:['Request saved on this device (prototype). Real bookings need Phase 2.','अनुरोध इस डिवाइस पर सेव हो गया है (प्रोटोटाइप)। असली बुकिंग के लिए फेज़ 2 चाहिए।'],saveOn:['Saved','सेव किया'],saveOff:['Removed from saved','सेव से हटाया'],emptySaved:['Tap the heart on a room to save it here.','किसी रूम पर दिल दबाएँ और इसे यहाँ सेव करें।'],savedRooms:['Saved rooms','सेव्ड रूम'],reqs:['Booking requests','बुकिंग अनुरोध'],curCity:['City','शहर'],notif:['Notifications','सूचनाएँ'],noNotif:['You have no notifications yet. Booking and message alerts will appear here once accounts are live (Phase 2).','अभी कोई सूचना नहीं। बुकिंग और मैसेज अलर्ट तब दिखेंगे जब अकाउंट लाइव होंगे (फेज़ 2)।'],searchRooms:['Search Rooms','रूम खोजें'],cities:['Popular Cities','लोकप्रिय शहर'],allC:['All cities','सभी शहर'],anyB:['Any budget','कोई भी बजट'],anyT:['Any room type','कोई भी रूम टाइप'],anyF:['Any furnishing','कोई भी'],anyFd:['Any food option','कोई भी'],anyG:['Any gender preference','कोई भी'],amen:['Amenities','सुविधाएँ'],gender:['Gender','लिंग'],h1a:['Find a place','एक ऐसी जगह खोजें'],h1b:['that feels like','जो लगे'],h1c:['Home','घर जैसी'],sub:['Verified rooms • Safe living • Across India','वेरिफाइड रूम • सुरक्षित रहना • पूरे भारत में'],loading:['Loading','लोड हो रहा है'],err:['Something went wrong while loading this page.','यह पेज लोड करते समय कुछ गलत हुआ।'],reload:['Reload','रीलोड'],close:['Close','बंद करें'],city:['City','शहर'],budget:['Budget','बजट'],type:['Room Type','रूम टाइप'],furn:['Furnishing','फर्निशिंग'],food:['Food Availability','खाना उपलब्धता'],wifi:['Wi-Fi','वाई-फ़ाई'],ac:['AC','एसी'],bath:['Attached Bathroom','अटैच्ड बाथरूम'],parking:['Parking','पार्किंग'],security:['Security','सुरक्षा'],power:['Power Backup','पावर बैकअप'],laundry:['Laundry','लॉन्ड्री'],PG:['PG','पीजी'],Single:['Single Room','सिंगल रूम'],Shared:['Shared Room','शेयर्ड रूम'],Flat:['Flat','फ्लैट'],Family:['Family Room','फैमिली रूम'],Furnished:['Furnished','फर्निश्ड'],Semi:['Semi-Furnished','सेमी-फर्निश्ड'],Unfurnished:['Unfurnished','अनफर्निश्ड'],Available:['Food Available','खाना उपलब्ध'],NotAvailable:['No Food','खाना नहीं'],Included:['Food Included','खाना शामिल'],Male:['Male','पुरुष'],Female:['Female','महिला'],Any:['Any','कोई भी'],go:['Search Rooms','रूम खोजें'],apply:['Apply Filters','फ़िल्टर लगाएँ'],clear:['Clear Filters','फ़िल्टर हटाएँ'],sort:['Sort','क्रम'],sNew:['Newest','नया सबसे पहले'],sLow:['Price: Low to high','कीमत: कम से ज़्यादा'],sHigh:['Price: High to low','कीमत: ज़्यादा से कम'],sRate:['Rating','रेटिंग'],b1:['Under ₹5,000','₹5,000 से कम'],b2:['₹5,000–₹10,000','₹5,000–₹10,000'],b3:['₹10,000–₹15,000','₹10,000–₹15,000'],b4:['₹15,000–₹25,000','₹15,000–₹25,000'],b5:['₹25,000–₹50,000','₹25,000–₹50,000'],b6:['₹50,000+','₹50,000+'],verified:['Verified','वेरिफाइड'],nobrok:['No Brokerage','नो ब्रोकरेज'],safe:['Safe & Secure','सुरक्षित'],easy:['Easy Booking','आसान बुकिंग'],soon:['This feature needs the Phase 2 backend (accounts and database), so it is not available yet. Nothing here is faked.','इस फ़ीचर के लिए फेज़ 2 बैकएंड (अकाउंट और डेटाबेस) चाहिए, इसलिए यह अभी उपलब्ध नहीं है। यहाँ कुछ भी नकली नहीं है।'],aboutT:['Alfrzo helps people find rooms, PGs, flats and family rooms across India.','अल्फ्रज़ो पूरे भारत में रूम, पीजी, फ्लैट और फैमिली रूम ढूँढने में मदद करता है।'],helpT:['Support channels will be added when the backend is live.','बैकएंड शुरू होने पर सहायता चैनल जोड़े जाएंगे।'],legalT:['The full legal text will be published before launch.','पूरा कानूनी पाठ लॉन्च से पहले प्रकाशित होगा।']};
 const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const blank={city:'',budget:'',type:'',furn:'',food:'',gender:'',am:[]};
-const S={lang:store.get('al_lang','en'),saved:new Set(store.get('al_saved',[])),bookings:store.get('al_book',[]),notes:store.get('al_notes',[]),
- city:store.get('al_city','Bengaluru'),F:{...blank,...store.get('al_f',{}),am:[]},sort:'new',loading:false};
+const S={lang:store.get('al_lang','en'),saved:new Set(store.get('al_saved',[])),bookings:store.get('al_book',[]),notes:store.get('al_notes',[]),city:store.get('al_city','Bengaluru'),F:{...blank,...store.get('al_f',{}),am:[]},sort:'new',loading:false};
 if(S.lang!=='hi')S.lang='en';
 const L=()=>S.lang==='hi'?1:0, t=k=>(T[k]||[k,k])[L()];
 const $=s=>document.querySelector(s), view=$('#view');
 const inr=n=>'₹'+n.toLocaleString('en-IN');
 const cityName=n=>{const c=CITIES.find(x=>x[0]===n);return c?c[L()]:n};
-const ic={pin:'<path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',inr:'<path d="M7 5h10M7 9h10M7 5c6 0 6 8 0 8l7 6"/>',home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>',find:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',heart:'<path d="M12 21s-8-5.4-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.6-8 11-8 11z"/>',bell:'<path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/>',menu:'<path d="M3 6h18M3 12h18M3 18h18"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',chev:'<path d="M6 9l6 6 6-6"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',book:'<rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'};
+const ic={pin:'<path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',inr:'<path d="M7 5h10M7 9h10M7 5c6 0 6 8 0 8l7 6"/>',home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',heart:'<path d="M12 21s-8.5-5.2-10.5-9.4C.4 8.6 2 5.6 5.3 5.6c2.2 0 3.6 1.3 4.5 2.6.9-1.3 2.3-2.6 4.5-2.6 3.3 0 4.9 3 3.8 5.9C20.5 15.8 12 21 12 21z"/>',menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',book:'<path d="M6 4h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2V6a2 2 0 0 1 2-2z"/>',search:'<circle cx="11" cy="11" r="5"/><path d="M16 16l5 5"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M5 20c1.5-3 4-4.5 7-4.5S17.5 17 19 20"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7.5A4 4 0 0 1 12 3.5a4 4 0 0 1 4 4V11"/>',shield:'<path d="M12 3l7 3v6c0 4.3-2.8 7.4-7 9-4.2-1.6-7-4.7-7-9V6l7-3z"/>',chev:'<path d="M7 10l5 5 5-5"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',bolt:'<path d="M13 2L5 13h5l-1 9 8-11h-5l1-9z"/>'};
 const svg=(k,c='')=>`<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${ic[k]}</svg>`;
 function toast(m){const e=$('#toast');e.textContent=m;e.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>e.classList.remove('show'),2200)}
-/* Fallback art when a photo file is missing: a distinct skyline per city (not a flat gradient) */
 function art(seed,w=200,h=200){let s=seed*9301+49297,r=()=>(s=(s*9301+49297)%233280)/233280,hue=(seed*47)%360,b='';
- for(let i=0,x=0;x<w;i++){const bw=18+r()*26,bh=40+r()*90;b+=`<rect x="${x}" y="${h-bh}" width="${bw-3}" height="${bh}" fill="hsl(${hue},35%,${22+r()*14}%)"/>`;for(let y=h-bh+8;y<h-6;y+=12)if(r()>.45)b+=`<rect x="${x+4}" y="${y}" width="4" height="5" fill="#ffd98a"/>`;x+=bw}
- return 'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMax slice"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(${hue},55%,45%)"/><stop offset="1" stop-color="hsl(${(hue+40)%360},60%,70%)"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#g)"/>${b}</svg>`)}
+ for(let i=0,x=0;x<w;i++){const bw=18+r()*26,bh=40+r()*90;b+=`<rect x="${x}" y="${h-bh}" width="${bw-3}" height="${bh}" fill="hsl(${hue},35%,${22+r()*14}%)"/>`;for(let y=h-bh+8;y<h-6;y+=12)if(r()<.7)b+=`<rect x="${x+6}" y="${y}" width="${bw-12}" height="5" fill="rgba(255,255,255,.08)"/>`;x+=bw}
+ return 'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMax slice"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="hsl(${hue},35%,28%)"/><stop offset="100%" stop-color="hsl(${hue+25},45%,18%)"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#g)"/>${b}</svg>`)}
 function img(file,seed,alt,extra=''){return `<img src="${IMG}${file}" alt="${alt}" ${extra} data-fb="${seed}" onerror="window.__fb(this)">`}
 window.__fb=function(el){if(el.dataset.done)return;el.dataset.done=1;el.src=art(+el.dataset.fb)};
-/* ---------- Filtering ---------- */
-function matches(r,F){
- if(F.city&&r.c!==F.city)return false;
- if(F.budget){const [a,b]=F.budget.split('-');if(r.p<+a||(b&&r.p>+b))return false}
- if(F.type&&r.type!==F.type)return false;if(F.furn&&r.furn!==F.furn)return false;if(F.food&&r.food!==F.food)return false;
- if(F.gender&&F.gender!=='Any'&&r.g!=='Any'&&r.g!==F.gender)return false;
- return F.am.every(a=>r.am.includes(a))}
+function matches(r,F){if(F.city&&r.c!==F.city)return false;if(F.budget){const [a,b]=F.budget.split('-');if(r.p<+a||(b&&r.p>+b))return false}if(F.type&&r.type!==F.type)return false;if(F.furn&&r.furn!==F.furn)return false;if(F.food&&r.food!==F.food)return false;if(F.gender&&F.gender!=='Any'&&r.g!=='Any'&&r.g!==F.gender)return false;return (!F.am||F.am.every(a=>r.am.includes(a)))}
 function sorted(a){const x=[...a];const f={new:(p,q)=>q.d.localeCompare(p.d),low:(p,q)=>p.p-q.p,high:(p,q)=>q.p-p.p,rate:(p,q)=>q.r-p.r}[S.sort];return x.sort(f)}
-const persist=()=>{store.set('al_lang',S.lang);store.set('al_saved',[...S.saved]);store.set('al_book',S.bookings);store.set('al_notes',S.notes);sv();store.set('al_city',S.city);store.set('al_f',{...S.F,am:[]})};
-/* ---------- Views ---------- */
+const persist=()=>{store.set('al_lang',S.lang);store.set('al_saved',[...S.saved]);store.set('al_book',S.bookings);store.set('al_notes',S.notes);store.set('al_city',S.city);store.set('al_f',{...S.F})};
 const opts=(arr,sel,first)=>(first?`<option value="">${first}</option>`:'')+arr.map(([v,l])=>`<option value="${v}" ${v===sel?'selected':''}>${l}</option>`).join('');
 const fld=(icon,id,inner)=>`<label class="field">${svg(icon)}<select id="${id}" aria-label="${t(id==='f-city'||id==='city'?'city':id.replace('f-',''))}">${inner}</select>${svg('chev','chev')}</label>`;
 const cityOpts=sel=>opts(CITIES.map(c=>[c[0],c[L()]]),sel,t('allC'));
 const budOpts=sel=>opts(BUDGETS.map(([v,k])=>[v,t(k)]),sel,t('anyB'));
 const typeOpts=sel=>opts(TYPES.map(k=>[k,t(k)]),sel,t('anyT'));
-function roomCard(r){const pic=['r1','r2','r3','r4'][r.id%4];
- return `<article class="room"><div class="pic">${r.img?`<img src="${r.img}" alt="" loading="lazy">`:img('room-'+(r.ph||(r.id%4+1))+'.jpg',r.id+30,t(r.type),'loading="lazy"')}<button class="heart ${S.saved.has(r.id)?'on':''}" data-save="${r.id}" aria-label="${t('save')}" aria-pressed="${S.saved.has(r.id)}">${svg('heart')}</button></div>
- <div class="info"><div><h3>${esc(r.t[L()])}</h3><div class="loc">${esc(r.a)}, ${cityName(r.c)}</div></div>
- <div class="price">${inr(r.p)}${t('mo')}</div>
- <div class="tags"><span>${t(r.type)}</span>${r.av===false?`<span style="background:#ffe3e8">${t('unav')}</span>`:''}<span>${t(r.food)}</span>${r.am.slice(0,1).map(a=>`<span>${t(a)}</span>`).join('')}</div>
- <div class="row"><span class="${r.n?'rate':''}">${r.n?`${r.r} <s>(${r.n})</s>`:t('newl')}</span><div class="acts"><button class="book" data-book="${r.id}">${t('book')}</button><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([r.addr,r.a,r.c,'India'].filter(Boolean).join(', '))}">View map ↗</a></div></div></div></article>`}
+function roomCard(r){const pic=['r1','r2','r3','r4'][r.id%4];return `<article class="room"><div class="pic">${r.img?`<img src="${r.img}" alt="" loading="lazy">`:img('room-'+(r.ph||(r.id%4+1))+'.jpg',r.id+30,t(r.type),'loading="lazy"')}<button class="heart ${S.saved.has(r.id)?'on':''}" data-save="${r.id}" aria-label="${t('saveOn')}">${svg('heart')}</button></div><div class="info"><div><h3>${esc(r.t[L()])}</h3><div class="loc">${esc(r.a)}, ${cityName(r.c)}</div></div><div class="price">${inr(r.p)}${t('mo')}</div><div class="tags"><span>${t(r.type)}</span><span>${t(r.food)}</span>${r.am.slice(0,1).map(a=>`<span>${t(a)}</span>`).join('')}</div><div class="row"><span class="${r.n?'rate':''}">${r.n?`${r.r} <s>(${r.n})</s>`:t('bookDone')}</span><button class="book" data-book="${r.id}">${t('book')}</button></div></div></article>`}
 const listHTML=(a,m)=>a.length?`<div class="list">${a.map(roomCard).join('')}</div>`:`<div class="empty">${m}</div>`;
-function cityBtn(c,i){return `<button class="city ${c[0]===S.city&&S.route==='home'?'on':''}" data-city="${c[0]}" aria-label="${c[L()]}">${img('city-'+slug(c[0])+'.jpg',i+1,c[0],'loading="lazy" width="200" height="200"')}<span>${c[L()]}</span></button>`}
-function homeSearch(){return `<section class="search">${fld('pin','city',cityOpts(S.city))}${fld('inr','budget',budOpts(S.F.budget))}${fld('home','type',typeOpts(S.F.type))}<button class="go" id="go">${svg('find')} ${t('go')}</button></section>`}
-function home(){const pf=[['shield','verified','#ece8ff','#5b3df5'],['inr','nobrok','#dff5ea','#17a05d'],['lock','safe','#ffe3f1','#e0247f'],['bolt','easy','#fff1d6','#f5a000']];
- const publishedOwners=ALL().filter(r=>r.own&&r.pub&&r.av!==false);const cityRooms=ALL().filter(r=>r.c===S.city&&r.av!==false);const feat=[...publishedOwners,...cityRooms.filter(r=>!r.own)].filter((r,i,a)=>a.findIndex(x=>x.id===r.id)===i).slice(0,6);const un=custNotes().filter(n=>!n.read).length;
- return `<header class="hero">${img('hero.jpg',7,'','class="hero-img" fetchpriority="high" decoding="async"').replace('data-done','')}<div class="bar"><button data-menu aria-label="${t('menu')}">${svg('menu')}</button><a class="logo" href="#/home" aria-label="Alfrzo"><i>${svg('home')}</i>Alfrzo</a><button data-go="saved" aria-label="${t('savedRooms')}">${svg('heart')}${S.saved.size?`<span class="badge">${S.saved.size}</span>`:''}</button><button data-notif aria-label="${t('notif')}">${svg('bell')}${un?`<span class="badge">${un}</span>`:''}</button></div>
- <h1>${t('h1a')}<br>${t('h1b')} <em>${t('h1c')}</em></h1><p>${t('sub')}</p></header>
- ${homeSearch()}
- <div class="perks">${pf.map(([i,l,bg,c])=>`<div><b style="background:${bg};color:${c}">${svg(i)}</b>${t(l)}</div>`).join('')}</div>
- <div class="sec"><h2>${t('popular')}</h2><a data-go="cities" role="link" tabindex="0">${t('viewall')}</a></div>
- <div class="cities">${CITIES.map(cityBtn).join('')}</div>
- <div class="sec"><h2>${t('featured')}</h2><div style="display:flex;gap:12px"><a data-go="map" role="link" tabindex="0">${t('mapView')}</a><a data-go="rooms" role="link" tabindex="0">${t('viewall')}</a></div></div>
- <p class="note">${t('proto')}</p>${listHTML(feat,t('none'))}`}
-function filterPanel(){const F=S.F;
- return `<div class="fp"><label class="field">${svg('pin')}<select id="f-city" aria-label="${t('city')}">${cityOpts(F.city)}</select>${svg('chev','chev')}</label>
- <label class="field">${svg('inr')}<select id="f-budget" aria-label="${t('budget')}">${budOpts(F.budget)}</select>${svg('chev','chev')}</label>
- <label class="field">${svg('home')}<select id="f-type" aria-label="${t('type')}">${typeOpts(F.type)}</select>${svg('chev','chev')}</label>
- <label class="field">${svg('home')}<select id="f-furn" aria-label="${t('furn')}">${opts(FURN.map(k=>[k,t(k)]),F.furn,t('anyF'))}</select>${svg('chev','chev')}</label>
- <label class="field">${svg('home')}<select id="f-food" aria-label="${t('food')}">${opts(FOOD.map(k=>[k,t(k)]),F.food,t('anyFd'))}</select>${svg('chev','chev')}</label>
- <label class="field">${svg('user')}<select id="f-gender" aria-label="${t('gender')}">${opts(GEN.map(k=>[k,t(k)]),F.gender,t('anyG'))}</select>${svg('chev','chev')}</label>
- <h4>${t('amen')}</h4><div class="chips" id="f-am">${AMS.map(a=>`<button type="button" class="chip ${F.am.includes(a)?'on':''}" data-am="${a}" aria-pressed="${F.am.includes(a)}">${t(a)}</button>`).join('')}</div>
- <div class="btns"><button class="ghost" id="clr">${t('clear')}</button><button class="go" id="apply">${svg('find')} ${t('apply')}</button></div></div>`}
-function results(){if(S.loading)return `<div class="list" style="margin-top:16px" role="status" aria-label="${t('loading')}"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>`;
- const a=sorted(ALL().filter(r=>matches(r,S.F)));
- return `<div class="sortbar"><span>${a.length} ${t('found')}</span><label>${t('sort')} <select id="sort">${opts([['new',t('sNew')],['low',t('sLow')],['high',t('sHigh')],['rate',t('sRate')]],S.sort)}</select></label></div>${listHTML(a,t('none'))}`}
+function cityBtn(c,i){return `<button class="city ${c[0]===S.city&&S.route==='home'?'on':''}" data-city="${c[0]}" aria-label="${c[L()]}">${img('city-'+slug(c[0])+'.jpg',i+1,c[0],'loading="lazy"')}<span>${c[L()]}</span></button>`}
+function homeSearch(){return `<section class="search">${fld('pin','city',cityOpts(S.city))}${fld('inr','budget',budOpts(S.F.budget))}${fld('home','type',typeOpts(S.F.type))}<button class="go" id="go">${svg('search')} ${t('go')}</button></section>`}
+function home(){const pf=[['shield','verified','#ece8ff','#5b3df5'],['inr','nobrok','#dff5ea','#17a05d'],['lock','safe','#ffe3f1','#e0247f'],['bolt','easy','#fff1d6','#f5a000']];const feat=ROOMS.slice(0,4);return `<header class="hero">${img('hero.jpg',7,'','class="hero-img" fetchpriority="high" decoding="async"').replace('data-done','')}<div class="bar"><button data-menu aria-label="${t('menu')}">${svg('menu')}</button><div class="logo"><i>${svg('home')}</i>Alfrzo</div></div><h1>${t('h1a')}<br>${t('h1b')} <em>${t('h1c')}</em></h1><p>${t('sub')}</p></header>${homeSearch()}<div class="perks">${pf.map(([i,l,bg,c])=>`<div><b style="background:${bg};color:${c}">${svg(i)}</b>${t(l)}</div>`).join('')}</div><div class="sec"><h2>${t('popular')}</h2><a data-go="cities" role="link" tabindex="0">${t('viewall')}</a></div><div class="cities">${CITIES.map(cityBtn).join('')}</div><div class="sec"><h2>${t('featured')}</h2><a data-go="rooms" role="link" tabindex="0">${t('viewall')}</a></div><p class="note">${t('proto')}</p>${listHTML(feat,t('none'))}`}
+function filterPanel(){const F=S.F;return `<div class="fp"><label class="field">${svg('pin')}<select id="f-city" aria-label="${t('city')}">${cityOpts(F.city)}</select>${svg('chev','chev')}</label><label class="field">${svg('inr')}<select id="f-budget" aria-label="${t('budget')}">${budOpts(F.budget)}</select>${svg('chev','chev')}</label><label class="field">${svg('home')}<select id="f-type" aria-label="${t('type')}">${typeOpts(F.type)}</select>${svg('chev','chev')}</label><label class="field">${svg('home')}<select id="f-furn" aria-label="${t('furn')}">${opts(FURN.map(k=>[k,t(k)]),F.furn,t('anyF'))}</select>${svg('chev','chev')}</label><label class="field">${svg('home')}<select id="f-food" aria-label="${t('food')}">${opts(FOOD.map(k=>[k,t(k)]),F.food,t('anyFd'))}</select>${svg('chev','chev')}</label><label class="field">${svg('user')}<select id="f-gender" aria-label="${t('gender')}">${opts(GEN.map(k=>[k,t(k)]),F.gender,t('anyG'))}</select>${svg('chev','chev')}</label><h4>${t('amen')}</h4><div class="chips" id="f-am">${AMS.map(a=>`<button type="button" class="chip ${F.am.includes(a)?'on':''}" data-am="${a}" aria-pressed="${F.am.includes(a)}">${t(a)}</button>`).join('')}</div><div class="btns"><button class="ghost" id="clr">${t('clear')}</button><button class="go" id="apply">${svg('search')} ${t('apply')}</button></div></div>`}
+function results(){if(S.loading)return `<div class="list" style="margin-top:16px" role="status" aria-label="${t('loading')}"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>`;const a=sorted(ROOMS.filter(r=>matches(r,S.F)));return `<div class="sortbar"><span>${a.length} ${t('found')}</span><label>${t('sort')} <select id="sort">${opts([['new',t('sNew')],['low',t('sLow')],['high',t('sHigh')],['rate',t('sRate')]],S.sort)}</select></label></div>${listHTML(a,t('none'))}`}
 function searchPage(){return `<div class="page"><h2>${t('searchRooms')}</h2></div>${filterPanel()}${results()}`}
-function rooms(){const a=sorted(ALL());return `<div class="page"><div class="row"><h2>${t('allRooms')}</h2><button class="book" data-go="map">${t('mapView')}</button></div><p>${t('proto')}</p></div>${listHTML(a,t('none'))}`}
+function rooms(){const a=sorted(ROOMS);return `<div class="page"><div class="row"><h2>${t('allRooms')}</h2><button class="book" data-go="home">${t('home')}</button></div><p>${t('proto')}</p></div>${listHTML(a,t('none'))}`}
 function cities(){return `<div class="page"><h2>${t('cities')}</h2></div><div class="cgrid">${CITIES.map(cityBtn).join('')}</div>`}
-function savedPage(){return `<div class="page"><h2>${t('savedRooms')}</h2></div>${listHTML(ALL().filter(r=>S.saved.has(r.id)),t('emptySaved'))}`}
-function bookingsPage(){return `<div class="page"><h2>${t('myBook')}</h2></div>${listHTML(ALLO().filter(r=>S.bookings.some(b=>(typeof b==='number'?b:b.room)===r.id)),t('emptyBook'))}`}
-function profilePage(){return `<div class="page"><h2>${t('myProf')}</h2><div class="prof"><div>${t('savedRooms')}: ${S.saved.size}</div><div>${t('reqs')}: ${S.bookings.length}</div><div>${t('curCity')}: ${cityName(S.city)}</div></div><p style="margin-top:14px">${t('soon')}</p></div>`}
+function savedPage(){return `<div class="page"><h2>${t('savedRooms')}</h2></div>${listHTML(ROOMS.filter(r=>S.saved.has(r.id)),t('emptySaved'))}`}
+function bookingsPage(){return `<div class="page"><h2>${t('bookings')}</h2></div><div class="empty">${t('soon')}</div>`}
+function profilePage(){return `<div class="page"><h2>${t('profile')}</h2><div class="prof"><div>${t('savedRooms')}: ${S.saved.size}</div><div>${t('bookings')}: ${S.bookings.length}</div><div>${t('curCity')}: ${cityName(S.city)}</div></div></div>`}
 const info=(k,b)=>()=>`<div class="page"><h2>${t(k)}</h2><p>${t(b)}</p></div>`;
-function mapPage(){const cities=[...new Set(ALL().map(r=>r.c).filter(Boolean))];return `<div class="page"><div class="row"><h2>${t('mapView')}</h2><button class="ghost" data-go="rooms">${t('allRooms')}</button></div><p>${t('mapHelp')}</p></div><div class="map-wrap"><div class="map-toolbar"><select id="map-city"><option value="">${t('mapCity')}</option>${cities.map(c=>`<option value="${esc(c)}" ${S.mapCity===c?'selected':''}>${esc(cityName(c))}</option>`).join('')}</select></div><div id="alfrzo-map" class="map-canvas" aria-label="Room locations map"></div><div class="map-note">Pins show listings with saved latitude and longitude. Listings without coordinates are listed below with a Google Maps search link.</div></div>${listHTML(ALL().filter(r=>!S.mapCity||r.c===S.mapCity),t('none'))}`}
-function initRoomMap(){const el=$('#alfrzo-map');if(!el||!window.L)return;const arr=ALL().filter(r=>(!S.mapCity||r.c===S.mapCity)&&r.lat!=null&&r.lng!=null);const map=L.map(el).setView([22.5,79],4);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);const pts=[];arr.forEach(r=>{const m=L.marker([+r.lat,+r.lng]).addTo(map).bindPopup(`<b>${esc(r.t[0])}</b><br>${esc(r.a)}, ${esc(r.c)}<br>${inr(r.p)}/month`);pts.push([+r.lat,+r.lng])});if(pts.length===1)map.setView(pts[0],14);else if(pts.length>1)map.fitBounds(pts,{padding:[24,24]});setTimeout(()=>map.invalidateSize(),150)}
-
-const PAGES={home,search:searchPage,rooms,cities,map:mapPage,saved:savedPage,bookings:bookingsPage,profile:profilePage,
- list:info('list','soon'),owner:info('owner','soon'),customer:info('cust','soon'),help:info('help','helpT'),about:info('about','aboutT'),contact:info('contact','helpT'),privacy:info('privacy','legalT'),terms:info('terms','legalT')};
-const TABS=[['home','home'],['search','find'],['saved','heart'],['bookings','book'],['profile','user']];
+const PAGES={home,search:searchPage,rooms,cities,saved:savedPage,bookings:bookingsPage,profile:profilePage,help:info('help','helpT'),about:info('about','aboutT'),contact:info('contact','helpT'),privacy:info('privacy','legalT')};
+const TABS=[['home','home'],['search','search'],['saved','heart'],['bookings','book'],['profile','user']];
 function renderTabs(){$('#tabs').innerHTML=TABS.map(([k,i])=>`<button data-tab="${k}" class="${S.route===k?'on':''}" ${S.route===k?'aria-current="page"':''}>${svg(i)}${t(k)}</button>`).join('')}
-const MENU=[['home','home'],['search','searchRooms'],['cities','cities'],['rooms','allRooms'],['map','mapView'],['saved','savedMenu'],['bookings','myBook'],['profile','myProf'],'-',['list','list'],['owner','owner'],['customer','cust'],'-',['help','help'],['about','about'],['contact','contact'],['privacy','privacy'],['terms','terms']];
-function renderDrawer(){$('#drawer').innerHTML=`<div class="dh"><div class="logo"><i style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#7a5bff,#c13bff);display:grid;place-items:center">${svg('home')}</i>Alfrzo</div><button data-close aria-label="${t('close')}">${svg('x')}</button></div><nav class="dn">${MENU.map(m=>m==='-'?'<hr>':`<button data-go="${m[0]}">${t(m[1])}</button>`).join('')}<hr><div class="lg" role="group" aria-label="${t('lang')}"><button data-lang="en" class="${S.lang==='en'?'on':''}">English</button><button data-lang="hi" class="${S.lang==='hi'?'on':''}">हिन्दी</button></div></nav>`}
-function renderSheet(){const n=custNotes();$('#sheet').innerHTML=`<h3>${t('notif')}<button data-close aria-label="${t('close')}">${svg('x')}</button></h3>${n.length?n.map(x=>`<div class="nt ${x.read?'':'u'}">${String(x.t?x.t[L()]:x.text).replace(/[<>&]/g,'')}</div>`).join('')+`<button class="ghost" style="width:100%" id="readall">${t('markRead')}</button>`:`<div class="empty" style="padding:24px 8px">${t('noNotif')}</div>`}`}
-/* ---------- Routing ---------- */
-function route(){return (location.hash.replace(/^#\/?/,'')||'home').split('?')[0]}
+const MENU=[['home','home'],['search','searchRooms'],['cities','cities'],['rooms','allRooms'],['saved','savedMenu'],['bookings','myBook'],['profile','myProf']];
+function renderDrawer(){$('#drawer').innerHTML=`<div class="dh"><div class="logo"><i>${svg('home')}</i>Alfrzo</div><button data-close aria-label="${t('close')}">${svg('x')}</button></div><div class="dn"><button data-go="home">${t('home')}</button><button data-go="search">${t('searchRooms')}</button><button data-go="cities">${t('cities')}</button><button data-go="rooms">${t('allRooms')}</button><button data-go="saved">${t('savedRooms')}</button><button data-go="bookings">${t('bookings')}</button><button data-go="profile">${t('profile')}</button><hr><button data-go="about">About</button><button data-go="help">Help</button><button data-go="privacy">Privacy</button></div>`}
+function renderSheet(){const items=[];$('#sheet').innerHTML=`<h3>${t('notif')}<button data-close aria-label="${t('close')}">${svg('x')}</button></h3>${items.length?items.map(x=>`<div class="nt">${esc(x)}</div>`).join(''):`<div class="nt">${t('noNotif')}</div>`}`}
+function route(){return (location.hash.replace(/^#\/?,'' )||'home').split('?')[0]} 
+
 function render(){
- try{S.route=PAGES[route()]?route():'home';document.documentElement.lang=S.lang;
-  view.innerHTML=PAGES[S.route]();renderTabs();renderDrawer();renderSheet();if(S.route==='map')initRoomMap()}
- catch(e){console.error(e);view.innerHTML=`<div class="empty">${t('err')}<br><br><button class="go" style="max-width:200px;margin:auto" onclick="location.reload()">${t('reload')}</button></div>`}}
+  try{S.route=PAGES[route()]?route():'home';document.documentElement.lang=S.lang;view.innerHTML=PAGES[S.route]();renderTabs();renderDrawer();renderSheet();}
+  catch(e){console.error(e);view.innerHTML=`<div class="empty">${t('err')}<br><br><button class="go" style="max-width:200px;margin:auto" onclick="location.reload()">${t('reload')}</button></div>`}
+}
 function go(r){closeAll();if(location.hash==='#/'+r){render()}else location.hash='/'+r;window.scrollTo(0,0)}
 window.addEventListener('hashchange',()=>{render();window.scrollTo(0,0)});
-/* ---------- Overlays ---------- */
- function open(el){closeAll();el.classList.add('show');el.setAttribute('aria-hidden','false');$('#ov').classList.add('show');document.body.classList.add('lock');const b=el.querySelector('button');b&&b.focus()}
+function open(el){closeAll();el.classList.add('show');el.setAttribute('aria-hidden','false');$('#ov').classList.add('show');document.body.classList.add('lock');const b=el.querySelector('button');if(b)b.focus()}
 function closeAll(){['#drawer','#sheet'].forEach(s=>{const e=$(s);e.classList.remove('show');e.setAttribute('aria-hidden','true')});$('#ov').classList.remove('show');document.body.classList.remove('lock')}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-go][role=link]')){e.preventDefault();go(e.target.dataset.go)}});
-/* ---------- Events ---------- */
-function readFilters(){const v=i=>{const e=$('#'+i);return e?e.value:''};S.F={city:v('f-city'),budget:v('f-budget'),type:v('f-type'),furn:v('f-furn'),food:v('f-food'),gender:v('f-gender'),am:[...document.querySelectorAll('#f-am .chip.on')].map(c=>c.dataset.am)};if(S.F.city)S.city=S.F.city}
+function readFilters(){const v=i=>{const e=$('#'+i);return e?e.value:''};S.F={city:v('f-city'),budget:v('f-budget'),type:v('f-type'),furn:v('f-furn'),food:v('f-food'),gender:v('f-gender'),am:[...document.querySelectorAll('#f-am .chip.on')].map(c=>c.dataset.am)};persist()}
 function applySearch(){S.loading=true;render();setTimeout(()=>{S.loading=false;persist();if(route()==='search')render()},350)}
 document.addEventListener('click',e=>{
- const q=s=>e.target.closest(s);let el;
- if(q('[data-close]')||e.target.id==='ov')return closeAll();
- if(q('[data-menu]'))return open($('#drawer'));
- if(q('[data-notif]'))return open($('#sheet'));
- if(el=q('[data-lang]')){S.lang=el.dataset.lang;persist();render();return}
- if(el=q('[data-tab]'))return go(el.dataset.tab);
- if(el=q('[data-go]'))return go(el.dataset.go);
- if(el=q('[data-city]')){const n=el.dataset.city;S.city=n;S.F.city=n;persist();if(S.route==='cities'){go('search');applySearch();return}render();return toast(cityName(n))}
- if(el=q('[data-save]')){const id=+el.dataset.save;S.saved.has(id)?S.saved.delete(id):S.saved.add(id);persist();toast(S.saved.has(id)?t('saveOn'):t('saveOff'));return render()}
- if(el=q('[data-book]'))return bookRoom(+el.dataset.book);
- if(el=q('[data-am]')){el.classList.toggle('on');el.setAttribute('aria-pressed',el.classList.contains('on'));return}
- if(q('#readall')){custNotes().forEach(n=>n.read=true);persist();return render()}
- if(q('#go')){S.F={...S.F,city:$('#city').value,budget:$('#budget').value,type:$('#type').value};if(S.F.city)S.city=S.F.city;persist();if(location.hash==='#/search')render();else location.hash='/search';return applySearch()}
- if(q('#apply')){readFilters();return applySearch()}
- if(q('#clr')){S.F={...blank};persist();return applySearch()}
+  const q=s=>e.target.closest(s);let el;
+  if(q('[data-close]')||e.target.id==='ov')return closeAll();
+  if(q('[data-menu]'))return open($('#drawer'));
+  if(q('[data-notif]'))return open($('#sheet'));
+  if(el=q('[data-tab]'))return go(el.dataset.tab);
+  if(el=q('[data-go]'))return go(el.dataset.go);
+  if(el=q('[data-city]')){const n=el.dataset.city;S.city=n;S.F.city=n;persist();if(S.route==='cities'){go('search');applySearch();return}render();return toast(cityName(n))}
+  if(el=q('[data-save]')){const id=+el.dataset.save;S.saved.has(id)?S.saved.delete(id):S.saved.add(id);persist();toast(S.saved.has(id)?t('saveOn'):t('saveOff'));return render()}
+  if(el=q('[data-book]')){return toast(t('bookDone'))}
+  if(el=q('[data-am]')){el.classList.toggle('on');el.setAttribute('aria-pressed',el.classList.contains('on'));return}
+  if(q('#go')){S.F={...S.F,city:$('#city').value,budget:$('#budget').value,type:$('#type').value};if(S.F.city)S.city=S.F.city;persist();if(location.hash==='#/search')render();else location.hash='/search';return}
+  if(q('#apply')){readFilters();return applySearch()}
+  if(q('#clr')){S.F={...blank};persist();return applySearch()}
 });
-document.addEventListener('change',e=>{if(e.target.id==='sort'){S.sort=e.target.value;render()}if(e.target.id==='map-city'){S.mapCity=e.target.value;render()}});
-/* ===== Phase 1 owner dashboard + shared demo data. localStorage = browser demo only: not secure, not a database, not shared across devices ===== */
-Object.assign(T,{mapView:['Map View','मैप देखें'],mapHelp:['Room locations appear here when the owner adds map coordinates. You can still open each room in Google Maps.','ओनर द्वारा मैप लोकेशन जोड़ने पर रूम यहाँ दिखेंगे। हर रूम को Google Maps में भी खोल सकते हैं।'],mapCity:['All cities','सभी शहर'],mapLoc:['Map location','मैप लोकेशन'],lat:['Latitude','अक्षांश'],lng:['Longitude','देशांतर'],findMap:['Find location on Google Maps','Google Maps पर लोकेशन खोजें'],Double:['Double Sharing','डबल शेयरिंग'],Triple:['Triple Sharing','ट्रिपल शेयरिंग'],owner:['Owner Dashboard','ओनर डैशबोर्ड'],cust:['Customer Area','कस्टमर एरिया'],
-noNotif:['No notifications yet. Booking updates will appear here.','अभी कोई सूचना नहीं। बुकिंग अपडेट यहाँ दिखेंगे।'],
-pending:['Pending','लंबित'],accepted:['Accepted','स्वीकृत'],rejected:['Rejected','अस्वीकृत'],cancelled:['Cancelled','रद्द'],all:['All','सभी'],
-unav:['Unavailable','उपलब्ध नहीं'],newl:['New','नया'],gone:['This listing is no longer available.','यह लिस्टिंग अब उपलब्ध नहीं है।'],
-ownerDash:['Owner Dashboard','ओनर डैशबोर्ड'],overview:['Overview','अवलोकन'],myList:['My Listings','मेरी लिस्टिंग'],bkMgmt:['Bookings','बुकिंग'],oprof:['Profile','प्रोफ़ाइल'],reviews:['Reviews','रिव्यू'],earn:['Earnings','कमाई'],logout:['Logout','लॉगआउट'],
-odemo:['DEMO: data is saved only in this browser (localStorage). It is not secure or private, and is not shared with other devices or users.','डेमो: डेटा केवल इसी ब्राउज़र (localStorage) में सेव है। यह सुरक्षित या निजी नहीं है और अन्य डिवाइस/यूज़र से साझा नहीं होता।'],
-gate:['DEMO login only. There is no real authentication: anyone using this browser can open this page. Real owner accounts arrive with Supabase auth (Phase 2).','केवल डेमो लॉगिन। असली ऑथेंटिकेशन नहीं है: इस ब्राउज़र का कोई भी व्यक्ति यह पेज खोल सकता है। असली ओनर अकाउंट फेज़ 2 (Supabase) में।'],cont:['Continue to demo Owner Dashboard','डेमो ओनर डैशबोर्ड खोलें'],
-cgate:['DEMO customer area. No real login yet; real accounts arrive with Supabase auth (Phase 2).','डेमो कस्टमर एरिया। अभी असली लॉगिन नहीं; असली अकाउंट फेज़ 2 (Supabase) में।'],cdemo:['Requests are saved on this device only (demo). Status changes made by the owner appear here in this same browser.','अनुरोध केवल इसी डिवाइस पर सेव हैं (डेमो)। ओनर के स्टेटस बदलाव इसी ब्राउज़र में यहाँ दिखते हैं।'],
-tList:['Total listings','कुल लिस्टिंग'],tAct:['Active listings','सक्रिय लिस्टिंग'],tPend:['Pending requests','लंबित अनुरोध'],tConf:['Confirmed bookings','कन्फर्म बुकिंग'],tCanc:['Cancelled bookings','रद्द बुकिंग'],tRej:['Rejected requests','अस्वीकृत अनुरोध'],
-recent:['Recent activity','हाल की गतिविधि'],noAct:['No activity yet.','अभी कोई गतिविधि नहीं।'],
-add:['+ Add new room','+ नया रूम जोड़ें'],edit:['Edit','एडिट'],del:['Delete','डिलीट'],pub:['Publish','पब्लिश'],unpub:['Unpublish','अनपब्लिश'],markAv:['Mark available','उपलब्ध करें'],markUn:['Mark unavailable','अनुपलब्ध करें'],published:['Published','पब्लिश्ड'],draft:['Draft','ड्राफ्ट'],avl:['Available','उपलब्ध'],
-noList:['You have no listings yet. Tap "Add new room".','अभी कोई लिस्टिंग नहीं। "नया रूम जोड़ें" दबाएँ।'],
-fTitle:['Room title','रूम का शीर्षक'],fRent:['Monthly rent (₹)','मासिक किराया (₹)'],fDep:['Deposit (₹)','डिपॉज़िट (₹)'],fLoc:['Locality','इलाका'],fAddr:['Full address','पूरा पता'],fDesc:['Description','विवरण'],fPhoto:['Room photo','रूम फोटो'],fUp:['Or upload your own','या अपनी फोटो अपलोड करें'],fPub:['Publish (visible to customers)','पब्लिश करें (कस्टमर को दिखे)'],fAv:['Currently available','अभी उपलब्ध'],saveBtn:['Save','सेव करें'],cancel:['Cancel','रद्द करें'],newRoom:['Add new room','नया रूम जोड़ें'],editRoom:['Edit room','रूम एडिट करें'],
-vTitle:['Enter a title (3+ characters).','शीर्षक लिखें (कम से कम 3 अक्षर)।'],vRent:['Enter rent as a whole number, at least ₹500.','किराया पूर्ण संख्या में लिखें, कम से कम ₹500।'],vDep:['Enter deposit as a whole number (0 or more).','डिपॉज़िट पूर्ण संख्या में लिखें (0 या अधिक)।'],vCity:['Choose a city.','शहर चुनें।'],vLoc:['Enter the locality.','इलाका लिखें।'],vAddr:['Enter the full address (10+ characters).','पूरा पता लिखें (कम से कम 10 अक्षर)।'],vName:['Enter your name (2+ characters).','अपना नाम लिखें (कम से कम 2 अक्षर)।'],vEmail:['Enter a valid email.','सही ईमेल लिखें।'],vPhone:['Enter a 10-digit mobile number.','10 अंकों का मोबाइल नंबर लिखें।'],vImg:['Choose a PNG, JPG or WebP image.','PNG, JPG या WebP इमेज चुनें।'],fix:['Please fix the highlighted fields.','कृपया चिह्नित फ़ील्ड ठीक करें।'],
-confDel:['Delete this listing? Active bookings for it will be cancelled. This cannot be undone.','यह लिस्टिंग डिलीट करें? इसकी सक्रिय बुकिंग रद्द होंगी। यह वापस नहीं होगा।'],
-cust1:['Customer','कस्टमर'],contact:['Contact','संपर्क'],noContact:['not collected in this prototype','इस प्रोटोटाइप में नहीं लिया गया'],reqOn:['Requested','अनुरोध'],updSt:['Update status','स्टेटस बदलें'],accept:['Accept','स्वीकार'],reject:['Reject','अस्वीकार'],noBk:['No booking requests here yet.','यहाँ अभी कोई बुकिंग अनुरोध नहीं।'],bnote:['Prototype: one demo owner manages requests for all rooms, including the sample rooms.','प्रोटोटाइप: एक डेमो ओनर सभी रूम (नमूना रूम सहित) के अनुरोध संभालता है।'],
-oName:['Name','नाम'],oEmail:['Email','ईमेल'],oPhone:['Phone','फोन'],oAddr:['Address','पता'],oPhoto:['Profile photo','प्रोफ़ाइल फोटो'],saved2:['Saved','सेव हो गया'],
-avg:['Average rating','औसत रेटिंग'],noRev:['No reviews yet. Customers can review after a booking is accepted.','अभी कोई रिव्यू नहीं। बुकिंग स्वीकार होने के बाद कस्टमर रिव्यू दे सकते हैं।'],revHist:['Review history','रिव्यू इतिहास'],rate:['Rate this stay','इस स्टे को रेट करें'],rvPh:['Write a short review (optional)','छोटा रिव्यू लिखें (वैकल्पिक)'],rvSend:['Submit review','रिव्यू भेजें'],rvDone:['Thanks! Review saved on this device.','धन्यवाद! रिव्यू इस डिवाइस पर सेव हुआ।'],
-cancelReq:['Cancel request','अनुरोध रद्द करें'],
-payNote:['DEMO: no payment provider is connected. No money has been collected or received. Amounts below are the listed rent plus deposit only.','डेमो: कोई पेमेंट प्रोवाइडर जुड़ा नहीं है। कोई पैसा नहीं लिया/मिला। नीचे की राशि केवल लिस्टेड किराया + डिपॉज़िट है।'],payNC:['Payment: not connected (demo)','पेमेंट: जुड़ा नहीं (डेमो)'],total:['Value of confirmed bookings (not received)','कन्फर्म बुकिंग का मूल्य (प्राप्त नहीं)'],noTx:['No transactions yet.','अभी कोई ट्रांज़ैक्शन नहीं।'],
-markOwn:['Mark all as read','सभी पढ़ा हुआ करें'],goS:['Search rooms','रूम खोजें']});
-const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-S.or=store.get('al_orooms',[]);S.rv=store.get('al_reviews',[]);S.op=store.get('al_oprof',{name:'Demo Owner',email:'',phone:'',addr:'',photo:''});S.oin=store.get('al_oin',false);S.ot='over';S.bf='all';S.edit=null;S.tmpImg='';
-function sv(){store.set('al_orooms',S.or);store.set('al_reviews',S.rv);store.set('al_oprof',S.op);store.set('al_oin',S.oin)}
-const rvOf=id=>S.rv.filter(v=>v.room===id);
-const wr=r=>{const v=rvOf(r.id),n=v.length;return {...r,n,r:n?Math.round(v.reduce((a,x)=>a+x.s,0)/n*10)/10:0}};
-const ALL=()=>ROOMS.concat(S.or.filter(r=>r.pub).map(wr)), ALLO=()=>ROOMS.concat(S.or);
-const snapR=r=>({room:r.id,title:r.t[0],city:r.c,amt:r.p,dep:r.dep||0});
-S.bookings=S.bookings.map((b,i)=>{if(typeof b!=='number')return b;const r=ALLO().find(x=>x.id===b);return {id:'b'+Date.now()+i,...(r?snapR(r):{room:b,title:'Room #'+b,city:'',amt:0,dep:0}),status:'pending',ts:Date.now(),cust:'Demo Customer'}});
-function ev(en,hi,role){S.notes.unshift({t:[en,hi],read:false,role,ts:Date.now()});S.notes=S.notes.slice(0,60)}
-const custNotes=()=>S.notes.filter(n=>n.role!=='o'), ownNotes=()=>S.notes.filter(n=>n.role==='o');
-const fdt=ts=>new Date(ts).toLocaleDateString(S.lang==='hi'?'hi-IN':'en-IN',{day:'numeric',month:'short',year:'numeric'});
-const active=b=>b.status==='pending'||b.status==='accepted';
-function bookRoom(id){const r=ALLO().find(x=>x.id===id);if(!r||(r.own&&!r.pub))return toast(t('gone'));if(r.av===false)return toast(t('unav'));
- if(S.bookings.some(b=>b.room===id&&active(b)))return toast(t('bookDup'));
- S.bookings.push({id:'b'+Date.now(),...snapR(r),status:'pending',ts:Date.now(),cust:'Demo Customer'});
- ev('New booking request: '+r.t[0],'नया बुकिंग अनुरोध: '+r.t[0],'o');persist();render();toast(t('bookDone'))}
-function setStatus(id,st){const b=S.bookings.find(x=>x.id===id);if(!b||b.status===st)return;
- if(active({status:st})&&S.bookings.some(x=>x!==b&&x.room===b.room&&active(x)))return toast(t('bookDup'));
- b.status=st;const n=T[st];ev('Your request for '+b.title+' is now '+n[0].toLowerCase(),b.title+' के लिए आपका अनुरोध: '+n[1],'c');ev('Booking '+n[0].toLowerCase()+': '+b.title,'बुकिंग '+n[1]+': '+b.title,'o');persist();render();toast(n[L()])}
-function bookingsPage2(){const bs=[...S.bookings].reverse();
- const act=b=>b.status==='pending'?`<div class="acts"><button data-ccan="${b.id}">${t('cancelReq')}</button></div>`:b.status==='accepted'?(S.rv.find(v=>v.bid===b.id)?`<div class="loc">★ ${S.rv.find(v=>v.bid===b.id).s} ✓</div>`:`<div class="acts"><select id="rs-${b.id}" aria-label="${t('rate')}">${[5,4,3,2,1].map(n=>`<option>${n}</option>`).join('')}</select><input id="rt-${b.id}" maxlength="200" placeholder="${t('rvPh')}" style="flex:1;min-width:120px;border:1.5px solid var(--line);border-radius:10px;padding:6px 8px"><button data-rev="${b.id}">${t('rvSend')}</button></div>`):'';
- return `<div class="page"><h2>${t('myBook')}</h2><div class="demo">${t('cdemo')}</div></div>`+(bs.length?`<div class="list">${bs.map(b=>`<article class="room bk"><div class="info"><div class="row"><h3>${esc(b.title)}</h3><span class="pill ${b.status}">${t(b.status)}</span></div><div class="loc">${esc(cityName(b.city))} · ${inr(b.amt)}${t('mo')}</div><div class="loc">${fdt(b.ts)}</div>${act(b)}</div></article>`).join('')}</div>`:`<div class="empty">${t('emptyBook')}</div>`)}
-function customerPage(){return `<div class="page"><h2>${t('cust')}</h2><div class="demo">${t('cgate')}</div><div class="prof"><div>${t('savedRooms')}: ${S.saved.size}</div><div>${t('reqs')}: ${S.bookings.length}</div></div><div class="acts" style="margin-top:12px"><button data-go="search">${t('goS')}</button><button data-go="saved">${t('savedRooms')}</button><button data-go="bookings">${t('myBook')}</button></div></div>`}
-/* ---- Owner ---- */
-const OT=[['over','overview'],['list','myList'],['book','bkMgmt'],['prof','oprof'],['rev','reviews'],['note','notif'],['earn','earn']];
-const stars=n=>'★'.repeat(n)+'☆'.repeat(5-n);
-const thumb=r=>r.img?`<img src="${r.img}" alt="">`:img('room-'+(r.ph||1)+'.jpg',r.id%50+30,'');
-function fg(l,id,inner){return `<div class="fg"><label for="${id}">${l}</label>${inner}<small class="ferr"></small></div>`}
-const sel=(id,arr,v,lab)=>`<select id="${id}">${arr.map(k=>`<option value="${k}" ${k===v?'selected':''}>${lab?lab(k):t(k)}</option>`).join('')}</select>`;
-function roomForm(){const n=S.edit==='new',r=n?{t:['',''],a:'',addr:'',c:'',p:'',dep:'',type:'Single',furn:'Furnished',food:'NotAvailable',g:'Any',am:[],desc:'',ph:1,pub:true,av:true,lat:'',lng:''}:S.or.find(x=>x.id===S.edit);
- if(!r){S.edit=null;return OV.list()}
- return `<h3>${t(n?'newRoom':'editRoom')}</h3><div class="card">${fg(t('fTitle'),'f_t',`<input id="f_t" maxlength="80" value="${esc(r.t[0])}">`)}${fg(t('fRent'),'f_p',`<input id="f_p" inputmode="numeric" value="${esc(r.p)}">`)}${fg(t('fDep'),'f_dep',`<input id="f_dep" inputmode="numeric" value="${esc(r.dep)}">`)}
- ${fg(t('city'),'f_c',`<select id="f_c"><option value="">${t('allC')}</option>${CITIES.map(c=>`<option value="${c[0]}" ${c[0]===r.c?'selected':''}>${c[L()]}</option>`).join('')}</select>`)}${fg(t('fLoc'),'f_a',`<input id="f_a" maxlength="60" value="${esc(r.a)}">`)}${fg(t('fAddr'),'f_addr',`<textarea id="f_addr" rows="2" maxlength="200">${esc(r.addr)}</textarea>`)}<div class="fg"><label>${t('mapLoc')}</label><div class="coord-grid"><input id="f_lat" inputmode="decimal" placeholder="${t('lat')} (e.g. 12.9716)" value="${esc(r.lat||'')}"><input id="f_lng" inputmode="decimal" placeholder="${t('lng')} (e.g. 77.5946)" value="${esc(r.lng||'')}"></div><div class="map-actions"><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([r.addr,r.a,r.c,'India'].filter(Boolean).join(', '))}">${t('findMap')} ↗</a></div><small>Enter coordinates from Google Maps to place an exact pin. These fields are optional.</small></div>
- ${fg(t('type'),'f_type',sel('f_type',['Single','Double','Triple','Family','PG'],r.type))}${fg(t('furn'),'f_furn',sel('f_furn',FURN,r.furn))}${fg(t('food'),'f_food',sel('f_food',FOOD,r.food))}${fg(t('gender'),'f_g',sel('f_g',GEN,r.g))}
- <div class="fg"><label>${t('amen')}</label><div class="chips" id="o-am">${AMS.map(a=>`<button type="button" class="chip ${r.am.includes(a)?'on':''}" data-am="${a}" aria-pressed="${r.am.includes(a)}">${t(a)}</button>`).join('')}</div></div>
- ${fg(t('fDesc'),'f_desc',`<textarea id="f_desc" rows="3" maxlength="500">${esc(r.desc)}</textarea>`)}
- <div class="fg"><label>${t('fPhoto')}</label><div class="phs">${[1,2,3,4].map(i=>`<label><input type="radio" name="ph" value="${i}" ${(!S.tmpImg&&(r.ph||1)===i)?'checked':''}>${img('room-'+i+'.jpg',i+30,'')}</label>`).join('')}</div><label style="margin-top:8px">${t('fUp')}</label><input type="file" id="f_file" accept="image/png,image/jpeg,image/webp"><div id="f_prev">${S.tmpImg?`<img src="${S.tmpImg}" alt="" style="width:90px;border-radius:10px;margin-top:6px">`:''}</div></div>
- <label class="chk"><input type="checkbox" id="f_pub" ${r.pub?'checked':''}> ${t('fPub')}</label><label class="chk"><input type="checkbox" id="f_av" ${r.av!==false?'checked':''}> ${t('fAv')}</label>
- <div class="btns"><button class="ghost" data-ocancel>${t('cancel')}</button><button class="go" data-osave>${t('saveBtn')}</button></div></div>`}
-function showErr(e){document.querySelectorAll('.ferr').forEach(x=>x.textContent='');for(const k in e){const x=$('#'+k);const s=x&&x.closest('.fg').querySelector('.ferr');if(s)s.textContent=t(e[k])}}
-function saveRoom(){const g=i=>$('#'+i).value.trim(),e={},tt=g('f_t'),p=+g('f_p'),dp=g('f_dep')===''?NaN:+g('f_dep'),a=g('f_a'),ad=g('f_addr');
- if(tt.length<3)e.f_t='vTitle';if(!(g('f_p')!==''&&Number.isInteger(p)&&p>=500))e.f_p='vRent';if(!(Number.isInteger(dp)&&dp>=0))e.f_dep='vDep';if(!g('f_c'))e.f_c='vCity';if(a.length<2)e.f_a='vLoc';if(ad.length<10)e.f_addr='vAddr';
- showErr(e);if(Object.keys(e).length)return toast(t('fix'));
- const ph=+((document.querySelector('input[name=ph]:checked')||{}).value||1),am=[...document.querySelectorAll('#o-am .chip.on')].map(c=>c.dataset.am);
- const lat=g('f_lat'),lng=g('f_lng');const coordOK=(!lat&&!lng)||(Number.isFinite(+lat)&&Number.isFinite(+lng)&&Math.abs(+lat)<=90&&Math.abs(+lng)<=180);if(!coordOK){toast('Please enter valid latitude and longitude');return}const o={t:[tt,tt],a,addr:ad,c:g('f_c'),p,dep:dp,lat:lat?+lat:null,lng:lng?+lng:null,type:g('f_type'),furn:g('f_furn'),food:g('f_food'),g:g('f_g'),am,desc:g('f_desc'),ph,img:S.tmpImg||'',pub:$('#f_pub').checked,av:$('#f_av').checked,own:true};
- if(S.edit==='new'){o.id=Math.max(1000,...S.or.map(x=>x.id))+1;o.d=new Date().toISOString().slice(0,10);o.r=0;o.n=0;S.or.push(o);ev('Listing added: '+tt+(o.pub?' (published)':' (draft)'),'लिस्टिंग जोड़ी: '+tt,'o')}
- else{const r=S.or.find(x=>x.id===S.edit);Object.assign(r,o);ev('Listing updated: '+tt,'लिस्टिंग अपडेट: '+tt,'o')}
- S.edit=null;S.tmpImg='';persist();render();toast(t('saved2'))}
-function delRoom(id){const r=S.or.find(x=>x.id===id);if(!r||!confirm(t('confDel')))return;
- S.or=S.or.filter(x=>x.id!==id);S.saved.delete(id);S.bookings.forEach(b=>{if(b.room===id&&active(b)){b.status='cancelled';ev('Your booking for '+b.title+' was cancelled (listing removed)',b.title+' की बुकिंग रद्द (लिस्टिंग हटी)','c')}});
- ev('Listing deleted: '+r.t[0],'लिस्टिंग डिलीट: '+r.t[0],'o');persist();render();toast(t('del'))}
-const OV={
-over(){const c=s=>S.bookings.filter(b=>b.status===s).length,st=[['tList',S.or.length],['tAct',S.or.filter(r=>r.pub&&r.av!==false).length],['tPend',c('pending')],['tConf',c('accepted')],['tCanc',c('cancelled')],['tRej',c('rejected')]],ac=ownNotes().slice(0,6);
- return `<div class="ostats">${st.map(([k,v])=>`<div><b>${v}</b><span>${t(k)}</span></div>`).join('')}</div><h3>${t('recent')}</h3>${ac.length?ac.map(x=>`<div class="nt">${esc(x.t[L()])}<br><small>${fdt(x.ts)}</small></div>`).join(''):`<div class="empty">${t('noAct')}</div>`}`},
-list(){if(S.edit)return roomForm();
- return `<div class="row" style="margin-bottom:10px"><h3 style="margin:0">${t('myList')}</h3><button class="book" data-oadd>${t('add')}</button></div>`+(S.or.length?`<div class="list">${S.or.map(r=>`<article class="room"><div class="pic">${thumb(r)}</div><div class="info"><h3>${esc(r.t[0])}</h3><div class="loc">${esc(r.a)}, ${esc(cityName(r.c))}</div><div class="price">${inr(r.p)} · ${t('fDep')} ${inr(r.dep)}</div><div class="tags"><span>${t(r.type)}</span><span class="pill ${r.pub?'accepted':'cancelled'}">${t(r.pub?'published':'draft')}</span><span class="pill ${r.av!==false?'accepted':'rejected'}">${r.av!==false?t('avl'):t('unav')}</span></div><div class="acts"><button data-oed="${r.id}">${t('edit')}</button><button data-opub="${r.id}">${t(r.pub?'unpub':'pub')}</button><button data-oav="${r.id}">${t(r.av!==false?'markUn':'markAv')}</button><button class="dng" data-odel="${r.id}">${t('del')}</button></div></div></article>`).join('')}</div>`:`<div class="empty">${t('noList')}</div>`)},
-book(){const bs=[...S.bookings].reverse().filter(b=>S.bf==='all'||b.status===S.bf),ST=['pending','accepted','rejected','cancelled'];
- return `<h3>${t('bkMgmt')}</h3><p class="demo">${t('bnote')}</p><div class="chips">${['all',...ST].map(k=>`<button class="chip ${S.bf===k?'on':''}" data-obf="${k}">${t(k)} (${k==='all'?S.bookings.length:S.bookings.filter(b=>b.status===k).length})</button>`).join('')}</div>`+
- (bs.length?`<div class="list">${bs.map(b=>`<article class="room bk"><div class="info"><div class="row"><h3>${esc(b.title)}</h3><span class="pill ${b.status}">${t(b.status)}</span></div><div class="loc">${esc(cityName(b.city))} · ${inr(b.amt)}${t('mo')} · ${t('fDep')} ${inr(b.dep)}</div><div class="loc">${t('cust1')}: ${esc(b.cust)} · ${t('contact')}: ${t('noContact')}</div><div class="loc">${t('reqOn')}: ${fdt(b.ts)}</div><div class="acts">${b.status==='pending'?`<button data-ost="${b.id}|accepted">${t('accept')}</button><button class="dng" data-ost="${b.id}|rejected">${t('reject')}</button>`:''}${active(b)?`<button class="dng" data-ost="${b.id}|cancelled">${t('cancel')}</button>`:''}<select data-ostsel="${b.id}" aria-label="${t('updSt')}"><option value="">${t('updSt')}</option>${ST.map(s=>`<option value="${s}">${t(s)}</option>`).join('')}</select></div></div></article>`).join('')}</div>`:`<div class="empty">${t('noBk')}</div>`)},
-prof(){const p=S.op;return `<h3>${t('oprof')}</h3><div class="card">${p.photo?`<img class="av" id="p_prev" src="${p.photo}" alt="">`:`<div class="av" id="p_prev" style="display:grid;place-items:center">${svg('user')}</div>`}${fg(t('oPhoto'),'p_file','<input type="file" id="p_file" accept="image/png,image/jpeg,image/webp">')}${fg(t('oName'),'p_name',`<input id="p_name" maxlength="60" value="${esc(p.name)}">`)}${fg(t('oEmail'),'p_email',`<input id="p_email" type="email" maxlength="80" value="${esc(p.email)}">`)}${fg(t('oPhone'),'p_phone',`<input id="p_phone" inputmode="numeric" maxlength="10" value="${esc(p.phone)}">`)}${fg(t('oAddr'),'p_addr',`<textarea id="p_addr" rows="2" maxlength="200">${esc(p.addr)}</textarea>`)}<button class="go" data-opsave>${t('saveBtn')}</button></div>`},
-rev(){const v=[...S.rv].reverse(),avg=v.length?Math.round(v.reduce((a,x)=>a+x.s,0)/v.length*10)/10:0;
- return `<h3>${t('reviews')}</h3><div class="ostats"><div><b>${v.length?avg+' ★':'—'}</b><span>${t('avg')} (${v.length})</span></div></div><h3>${t('revHist')}</h3>`+(v.length?v.map(x=>`<div class="nt"><b>${stars(x.s)}</b> ${esc(x.title)}<br>${esc(x.txt)}<br><small>${fdt(x.ts)}</small></div>`).join(''):`<div class="empty">${t('noRev')}</div>`)},
-note(){const n=ownNotes();return `<h3>${t('notif')}</h3>`+(n.length?n.map(x=>`<div class="nt ${x.read?'':'u'}">${esc(x.t[L()])}<br><small>${fdt(x.ts)}</small></div>`).join('')+`<button class="ghost" style="width:100%" data-onread>${t('markOwn')}</button>`:`<div class="empty">${t('noNotif')}</div>`)},
-earn(){const bs=[...S.bookings].reverse(),tot=bs.filter(b=>b.status==='accepted').reduce((a,b)=>a+b.amt+b.dep,0);
- return `<h3>${t('earn')}</h3><div class="demo">${t('payNote')}</div><div class="ostats"><div><b>${inr(tot)}</b><span>${t('total')}</span></div></div>`+(bs.length?bs.map(b=>`<div class="card"><div class="row"><b>${esc(b.title)}</b><span class="pill ${b.status}">${t(b.status)}</span></div>${inr(b.amt)} + ${t('fDep')} ${inr(b.dep)}<br><small>${fdt(b.ts)} · ${t('payNC')}</small></div>`).join(''):`<div class="empty">${t('noTx')}</div>`)}};
-function ownerPage(){if(!S.oin)return `<div class="page"><h2>${t('ownerDash')}</h2><div class="demo">${t('gate')}</div><button class="go" id="ologin">${t('cont')}</button></div>`;
- const un=ownNotes().filter(n=>!n.read).length;
- return `<div class="odh"><button data-menu aria-label="${t('menu')}">${svg('menu')}</button><span>Alfrzo · ${t('ownerDash')}</span></div><div class="od"><nav class="onav" aria-label="${t('ownerDash')}">${OT.map(([k,l])=>`<button data-ot="${k}" class="${S.ot===k?'on':''}">${t(l)}${k==='note'&&un?` (${un})`:''}</button>`).join('')}<button class="lo" data-ologout>${t('logout')}</button></nav><section class="oc"><div class="demo">${t('odemo')}</div>${OV[S.ot]()}</section></div>`}
-PAGES.owner=ownerPage;PAGES.list=()=>{S.ot='over';S.edit=null;S.tmpImg='';return ownerPage()};PAGES.customer=customerPage;PAGES.bookings=bookingsPage2;
-function readImg(f,mx,cb){if(!f)return;if(!/^image\/(png|jpe?g|webp)$/.test(f.type))return toast(t('vImg'));const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,mx/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',.72))};im.onerror=()=>toast(t('vImg'));im.src=fr.result};fr.readAsDataURL(f)}
-document.addEventListener('click',e=>{const q=s=>e.target.closest(s);let el;
- if(q('#ologin')){S.oin=true;sv();return render()}
- if(q('[data-ologout]')){S.oin=false;S.edit=null;sv();go('home');return toast(t('logout'))}
- if(el=q('[data-ot]')){S.ot=el.dataset.ot;S.edit=null;S.tmpImg='';if(route()!=='owner')location.hash='/owner';else render();return window.scrollTo(0,0)}
- if(el=q('[data-ccan]'))return setStatus(el.dataset.ccan,'cancelled');
- if(el=q('[data-rev]')){const id=el.dataset.rev,b=S.bookings.find(x=>x.id===id);if(!b||S.rv.some(v=>v.bid===id))return;S.rv.push({id:'v'+Date.now(),bid:id,room:b.room,title:b.title,s:+$('#rs-'+id).value,txt:$('#rt-'+id).value.trim().slice(0,200),ts:Date.now()});ev('New review for '+b.title,b.title+' के लिए नया रिव्यू','o');persist();render();return toast(t('rvDone'))}
- if(q('[data-oadd]')){S.edit='new';S.tmpImg='';return render()}
- if(el=q('[data-oed]')){S.edit=+el.dataset.oed;const r=S.or.find(x=>x.id===S.edit);S.tmpImg=(r&&r.img)||'';return render()}
- if(q('[data-ocancel]')){S.edit=null;S.tmpImg='';return render()}
- if(q('[data-osave]'))return saveRoom();
- if(el=q('[data-opub]')){const r=S.or.find(x=>x.id===+el.dataset.opub);if(!r)return;r.pub=!r.pub;ev('Listing '+(r.pub?'published':'unpublished')+': '+r.t[0],'लिस्टिंग '+(r.pub?'पब्लिश':'अनपब्लिश')+': '+r.t[0],'o');persist();return render()}
- if(el=q('[data-oav]')){const r=S.or.find(x=>x.id===+el.dataset.oav);if(!r)return;r.av=r.av===false;ev('Listing marked '+(r.av?'available':'unavailable')+': '+r.t[0],'लिस्टिंग '+(r.av?'उपलब्ध':'अनुपलब्ध')+': '+r.t[0],'o');persist();return render()}
- if(el=q('[data-odel]'))return delRoom(+el.dataset.odel);
- if(el=q('[data-obf]')){S.bf=el.dataset.obf;return render()}
- if(el=q('[data-ost]')){const [id,st]=el.dataset.ost.split('|');return setStatus(id,st)}
- if(q('[data-onread]')){S.notes.forEach(n=>{if(n.role==='o')n.read=true});persist();return render()}
- if(q('[data-opsave]')){const g=i=>$('#'+i).value.trim(),e2={};if(g('p_name').length<2)e2.p_name='vName';if(g('p_email')&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(g('p_email')))e2.p_email='vEmail';if(g('p_phone')&&!/^[6-9]\d{9}$/.test(g('p_phone')))e2.p_phone='vPhone';
-  showErr(e2);if(Object.keys(e2).length)return toast(t('fix'));S.op={...S.op,name:g('p_name'),email:g('p_email'),phone:g('p_phone'),addr:g('p_addr')};sv();return toast(t('saved2'))}
-});
-document.addEventListener('change',e=>{const x=e.target;
- if(x.matches('[data-ostsel]')&&x.value)return setStatus(x.dataset.ostsel,x.value);
- if(x.name==='ph'){S.tmpImg='';const p=$('#f_prev');if(p)p.innerHTML=''}
- if(x.id==='f_file')readImg(x.files[0],480,d=>{S.tmpImg=d;document.querySelectorAll('input[name=ph]').forEach(r=>r.checked=false);$('#f_prev').innerHTML=`<img src="${d}" alt="" style="width:90px;border-radius:10px;margin-top:6px">`});
- if(x.id==='p_file')readImg(x.files[0],200,d=>{S.op.photo=d;sv();render()})});
+document.addEventListener('change',e=>{if(e.target.id==='sort'){S.sort=e.target.value;render()} });
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
 render();
 })();
 </script>
